@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Okusi Dalmacije – Hrana & Vino · Zdenka Rinčić</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --crna:      #000000;
+    --crna-mid:  #111111;
+    --crvena:    #C0392B;
+    --zlatna:    #C9A84C;
+    --bez:       #F5F0E8;
+    --bijela:    #FFFFFF;
+    --text-dark: #1a1a1a;
+    --text-mid:  #4a4a4a;
+    --text-lt:   #888;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--text-dark); background: var(--bijela); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(0,0,0,.85); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,.08); transition: padding .3s;
+  }
+  nav.scrolled { padding: .8rem 3rem; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; letter-spacing: .08em; color: var(--bez); text-decoration: none; }
+  .nav-logo span { color: var(--zlatna); font-style: italic; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--zlatna); }
+  .lang-switcher { display: flex; gap: .5rem; }
+  .lang-btn { font-family: var(--font-body); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid rgba(255,255,255,.25); background: transparent; color: rgba(255,255,255,.6); padding: .3rem .6rem; border-radius: 2px; cursor: pointer; transition: all .2s; }
+  .lang-btn.active, .lang-btn:hover { background: var(--zlatna); border-color: var(--zlatna); color: var(--crna); }
+
+  .hero { height: 72vh; min-height: 520px; position: relative; display: flex; align-items: flex-end; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(160deg, rgba(0,0,0,.75) 0%, rgba(100,50,0,.38) 60%, rgba(201,168,76,.28) 100%),
+      url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80') center/cover no-repeat;
+  }
+  .hero-content { position: relative; z-index: 1; padding: 0 3rem 4rem; }
+  .hero-eyebrow { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--zlatna); margin-bottom: 1rem; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 400; color: var(--bijela); line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero-title em { color: var(--zlatna); font-style: italic; }
+  .hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-meta-item { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+  .hero-meta-item strong { color: var(--bijela); }
+
+  .section-wrap { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--zlatna); margin-bottom: .8rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 1rem; }
+  .section-title em { color: var(--zlatna); font-style: italic; }
+  .section-divider { width: 60px; height: 2px; background: var(--zlatna); margin-bottom: 2.5rem; }
+
+  .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
+  .overview-card { background: var(--bez); padding: 1.5rem; border-top: 3px solid var(--zlatna); }
+  .overview-card .lbl { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-lt); margin-bottom: .5rem; }
+  .overview-card .val { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--crna); }
+
+  .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .desc-text p { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.5rem; }
+  .itinerary { list-style: none; }
+  .itinerary li { display: flex; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+  .itinerary li:last-child { border-bottom: none; }
+  .itinerary .time { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--zlatna); white-space: nowrap; padding-top: .2rem; min-width: 70px; }
+  .itinerary .step-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--crna); margin-bottom: .3rem; }
+  .itinerary .step-desc { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* TASTING HIGHLIGHT STRIP */
+  .tasting-strip { background: var(--crna); padding: 5rem 3rem; }
+  .tasting-inner { max-width: 1200px; margin: 0 auto; }
+  .tasting-strip .section-label { color: var(--zlatna); }
+  .tasting-strip .section-title { color: var(--bijela); }
+  .tasting-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .tasting-card { padding: 1.8rem; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-bottom: 3px solid var(--zlatna); }
+  .tasting-icon { font-size: 2rem; margin-bottom: .8rem; }
+  .tasting-card h4 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--bijela); margin-bottom: .5rem; }
+  .tasting-card p { font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+  .includes-section { background: var(--bez); }
+  .includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .includes-box h4 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; margin-bottom: 1rem; color: var(--crna); }
+  .includes-box ul { list-style: none; }
+  .includes-box ul li { font-size: .88rem; color: var(--text-mid); padding: .4rem 0; border-bottom: 1px solid rgba(0,0,0,.05); display: flex; align-items: center; gap: .6rem; }
+  .includes-box ul li::before { content: '✓'; color: var(--zlatna); font-weight: 600; }
+  .includes-box.excluded ul li::before { content: '✗'; color: var(--text-lt); }
+
+  .gallery-section { background: var(--bijela); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); height: 260px; gap: .8rem; margin-top: 2.5rem; }
+  .gallery-item { overflow: hidden; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .booking-section { background: var(--bez); }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+  .booking-info p { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; font-size: .9rem; color: var(--text-mid); }
+  .contact-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--zlatna); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; flex-shrink: 0; }
+  .price-tag { display: inline-flex; align-items: baseline; gap: .2rem; font-family: var(--font-display); margin-bottom: 2rem; }
+  .price-tag .amount { font-size: 2.5rem; font-weight: 300; color: var(--zlatna); }
+  .price-tag .currency { font-size: 1.2rem; color: var(--zlatna); }
+  .price-tag .per { font-size: .85rem; color: var(--text-lt); }
+  .cal-embed-wrap { background: var(--bijela); box-shadow: 0 8px 40px rgba(0,0,0,.1); overflow: hidden; min-height: 600px; }
+  #my-cal-inline { width: 100%; min-height: 600px; }
+
+  .btn-primary { display: inline-block; padding: .85rem 2rem; background: var(--zlatna); color: var(--crna); font-family: var(--font-body); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
+  .btn-primary:hover { background: #b8962e; }
+
+  footer { background: var(--crna); color: rgba(255,255,255,.5); padding: 2.5rem 3rem; text-align: center; font-size: .78rem; letter-spacing: .08em; }
+  footer a { color: var(--zlatna); text-decoration: none; }
+
+  @media (max-width: 960px) {
+    nav { padding: 1rem 1.5rem; } nav.scrolled { padding: .7rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 1.5rem 3rem; }
+    .section-wrap { padding: 4rem 1.5rem; }
+    .tasting-strip { padding: 4rem 1.5rem; }
+    .overview-grid { grid-template-columns: 1fr 1fr; }
+    .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+    .tasting-grid { grid-template-columns: 1fr; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; height: auto; grid-template-rows: 200px 200px; }
+    .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Zdenka <span>Rinčić</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about"   data-i18n="nav.about">O Meni</a></li>
+    <li><a href="index.html#tours"   data-i18n="nav.tours">Ture</a></li>
+    <li><a href="index.html#gallery" data-i18n="nav.gallery">Galerija</a></li>
+    <li><a href="#booking"           data-i18n="nav.book" class="active">Rezervacija</a></li>
+    <li><a href="index.html#reviews" data-i18n="nav.reviews">Recenzije</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('hr')">HR</button>
+    <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    <button class="lang-btn"        onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Gastro tura · Zadar & okolica</p>
+    <h1 class="hero-title" data-i18n-html="hero.title">Okusi <em>Dalmacije</em></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>4 h</strong> · <span data-i18n="meta.dur">Trajanje</span></div>
+      <div class="hero-meta-item"><strong>Max 10</strong> · <span data-i18n="meta.grp">Osoba</span></div>
+      <div class="hero-meta-item"><strong>EN · FR · HR</strong> · <span data-i18n="meta.lng">Jezici</span></div>
+      <div class="hero-meta-item"><strong>€75</strong> · <span data-i18n="meta.price">Po osobi</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap">
+  <p class="section-label" data-i18n="overview.label">Pregled ture</p>
+  <h2 class="section-title" data-i18n-html="overview.title">Maslinovo ulje, paški sir<br><em>i lokalno vino</em></h2>
+  <div class="section-divider"></div>
+  <div class="overview-grid">
+    <div class="overview-card"><div class="lbl" data-i18n="card.price">Cijena</div><div class="val"><sup>€</sup>75 <small style="font-size:.75rem;color:var(--text-lt)">/ <span data-i18n="card.per">osobi</span></small></div></div>
+    <div class="overview-card"><div class="lbl" data-i18n="card.dur">Trajanje</div><div class="val" data-i18n="card.dur.val">4 sata</div></div>
+    <div class="overview-card"><div class="lbl" data-i18n="card.grp">Veličina grupe</div><div class="val" data-i18n="card.grp.val">Max 10 osoba</div></div>
+    <div class="overview-card"><div class="lbl" data-i18n="card.lng">Jezici</div><div class="val">EN · FR · HR</div></div>
+  </div>
+  <div class="two-col">
+    <div class="desc-text">
+      <p data-i18n="desc.p1">Dalmatinska kuhinja nije samo hrana — to je kultura, tradicija i geografija u jednom tanjuru. Ova tura vas vodi iza kulisa zadarske tržnice, u obiteljske konobe i kod proizvođača koje turisti nikad ne nađu sami.</p>
+      <p data-i18n="desc.p2">Degustirat ćemo ekstra djevičansko maslinovo ulje s obroncima Velebita, paški sir odležan u morskoj soli, pjenušave moravce iz zadarskih vinograda i svježe kamenice — sve uz osobnu priču svakog proizvođača.</p>
+      <p data-i18n="desc.p3">Tura je prikladna za sve razine poznavanja gastronomije — od entuzijasta do onih koji žele razumjeti zašto dalmatinska kuhinja dominira svjetskim jelovnicima.</p>
+      <a href="#booking" class="btn-primary" data-i18n="cta.book">Rezerviraj termin</a>
+    </div>
+    <div>
+      <p class="section-label" data-i18n="itinerary.label">Raspored</p>
+      <ul class="itinerary">
+        <li><span class="time">09:00</span><div><div class="step-title" data-i18n="s1.title">Zadarska tržnica — Pijaca</div><div class="step-desc" data-i18n="s1.desc">Jutarnji obilazak zadarske tržnice. Lokalni prodavači, sezonsko voće i povrće, razgovor s ribarima i povrtlarima.</div></div></li>
+        <li><span class="time">09:45</span><div><div class="step-title" data-i18n="s2.title">Kušaonica maslinovih ulja</div><div class="step-desc" data-i18n="s2.desc">Posjet obiteljskom masliniku. Degustacija 4 sorte ekstra djevičanskog ulja uz domaći kruh.</div></div></li>
+        <li><span class="time">10:30</span><div><div class="step-title" data-i18n="s3.title">Paški sir & lokalni sirevi</div><div class="step-desc" data-i18n="s3.desc">Degustacija autohtonih sireva — od mladog paškog do odležanog tvrdog. Priča o paškim ovcama i ručnoj izradi.</div></div></li>
+        <li><span class="time">11:30</span><div><div class="step-title" data-i18n="s4.title">Konoba — Ručak & degustacija vina</div><div class="step-desc" data-i18n="s4.desc">Ručak u autentičnoj konobi: pršut, marinirana riba, peka po narudžbi. Degustacija lokalnih vina — maraština, babić i prošek.</div></div></li>
+        <li><span class="time">12:45</span><div><div class="step-title" data-i18n="s5.title">Slatki završetak</div><div class="step-desc" data-i18n="s5.desc">Degustacija dalmatinskih slastica — rozata, fritule, kroštule i arancini. Kava i razgovor o svemu što smo okusili.</div></div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TASTING STRIP -->
+<div class="tasting-strip">
+  <div class="tasting-inner">
+    <p class="section-label" data-i18n="tasting.label">Što ćete kušati</p>
+    <h2 class="section-title" data-i18n-html="tasting.title">Okusi koje <em>nećete zaboraviti</em></h2>
+    <div class="section-divider"></div>
+    <div class="tasting-grid">
+      <div class="tasting-card"><div class="tasting-icon">🫒</div><h4 data-i18n="t1.name">Maslinovo ulje</h4><p data-i18n="t1.desc">Ekstra djevičansko ulje s obroncka Velebita — zlatno-zelene boje, voćno s gorko-pikantnom završnicom.</p></div>
+      <div class="tasting-card"><div class="tasting-icon">🧀</div><h4 data-i18n="t2.name">Paški sir</h4><p data-i18n="t2.desc">Jedinstven okus zahvaljujući ovcama koje pasu na aromatičnom bilju Paga. Ručno pravljeno, odležano u maslinovom ulju.</p></div>
+      <div class="tasting-card"><div class="tasting-icon">🍷</div><h4 data-i18n="t3.name">Lokalna vina</h4><p data-i18n="t3.desc">Maraština — suho bijelo s mineralnom notom. Babić — crno s aromom višnje. Prošek — slatko desertno vino.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="includes-section">
+  <div class="section-wrap">
+    <p class="section-label" data-i18n="details.label">Detalji ture</p>
+    <h2 class="section-title" data-i18n-html="details.title">Što je <em>uključeno</em></h2>
+    <div class="section-divider"></div>
+    <div class="includes-grid">
+      <div class="includes-box">
+        <h4 data-i18n="inc.title">Uključeno u cijenu</h4>
+        <ul>
+          <li data-i18n="inc.1">Licencirana turistička vodiča (Zdenka Rinčić)</li>
+          <li data-i18n="inc.2">Sve degustacije (maslinovo ulje, sir, vino)</li>
+          <li data-i18n="inc.3">Ručak u konobi (pršut, riba, salate)</li>
+          <li data-i18n="inc.4">Prijevoz između lokacija</li>
+          <li data-i18n="inc.5">Degustacija slastica</li>
+          <li data-i18n="inc.6">Mali pokloni od domaćih proizvođača</li>
+        </ul>
+      </div>
+      <div class="includes-box excluded">
+        <h4 data-i18n="exc.title">Nije uključeno</h4>
+        <ul>
+          <li data-i18n="exc.1">Prijevoz do polazišne točke</li>
+          <li data-i18n="exc.2">Kupovina kod proizvođača</li>
+          <li data-i18n="exc.3">Dodatna pića izvan degustacije</li>
+          <li data-i18n="exc.4">Napojnica (dobrodošla, ali nije obavezna)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-section">
+  <div class="section-wrap">
+    <p class="section-label" data-i18n="gallery.label">Galerija</p>
+    <h2 class="section-title" data-i18n-html="gallery.title">Hrana i <em>tradicija</em></h2>
+    <div class="section-divider"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85" alt="Dalmatinska kuhinja" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85" alt="Lokalna hrana" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=85" alt="Vinska degustacija" /></div>
+    </div>
+  </div>
+</div>
+
+<div class="booking-section" id="booking">
+  <div class="section-wrap">
+    <div class="booking-grid">
+      <div class="booking-info">
+        <p class="section-label" data-i18n="booking.label">Rezervacija</p>
+        <h2 class="section-title" data-i18n-html="booking.title">Odaberite <em>termin</em></h2>
+        <div class="section-divider"></div>
+        <p data-i18n="booking.desc">Gastro tura polazi ujutro svaki dan. Za grupe 6+ osoba preporučujemo rezervaciju tjedan dana unaprijed.</p>
+        <div class="price-tag"><span class="currency">€</span><span class="amount">75</span><span class="per">/ <span data-i18n="card.per">osobi</span></span></div>
+        <div class="contact-items">
+          <div class="contact-item"><div class="contact-icon">📞</div><div><strong>+385 91 3345170</strong><br><small style="color:var(--text-lt)" data-i18n="contact.phone">Pon–Ned, 08:00–20:00</small></div></div>
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><strong><a href="mailto:zdenka2022@gmail.com" style="color:inherit">zdenka2022@gmail.com</a></strong><br><small style="color:var(--text-lt)" data-i18n="contact.email">Odgovaram unutar 2 sata</small></div></div>
+        </div>
+      </div>
+      <div class="cal-embed-wrap">
+        <div id="my-cal-inline"></div>
+        <script type="text/javascript">
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", {origin:"https://cal.com"});
+          Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/gastro", layout: "month_view" });
+          Cal("ui", { styles: { branding: { brandColor: "#000000" } }, hideEventTypeDetails: false, layout: "month_view" });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p style="margin-bottom:.5rem"><a href="index.html">Zdenka Rinčić · Zadar Private Tours</a></p>
+  <p>© 2025 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
+</footer>
+
+<script>
+const TRANSLATIONS = {
+  hr: {
+    "nav.about":"O Meni","nav.tours":"Ture","nav.gallery":"Galerija","nav.book":"Rezervacija","nav.reviews":"Recenzije",
+    "hero.eyebrow":"Gastro tura · Zadar & okolica","hero.title":"Okusi <em>Dalmacije</em>",
+    "meta.dur":"Trajanje","meta.grp":"Osoba","meta.lng":"Jezici","meta.price":"Po osobi",
+    "overview.label":"Pregled ture","overview.title":"Maslinovo ulje, paški sir<br><em>i lokalno vino</em>",
+    "card.price":"Cijena","card.per":"osobi","card.dur":"Trajanje","card.dur.val":"4 sata","card.grp":"Veličina grupe","card.grp.val":"Max 10 osoba","card.lng":"Jezici",
+    "desc.p1":"Dalmatinska kuhinja nije samo hrana — to je kultura, tradicija i geografija u jednom tanjuru. Ova tura vas vodi iza kulisa zadarske tržnice, u obiteljske konobe i kod proizvođača koje turisti nikad ne nađu sami.",
+    "desc.p2":"Degustirat ćemo ekstra djevičansko maslinovo ulje s obroncima Velebita, paški sir odležan u morskoj soli, pjenušave moravce iz zadarskih vinograda i svježe kamenice — sve uz osobnu priču svakog proizvođača.",
+    "desc.p3":"Tura je prikladna za sve razine poznavanja gastronomije — od entuzijasta do onih koji žele razumjeti zašto dalmatinska kuhinja dominira svjetskim jelovnicima.",
+    "cta.book":"Rezerviraj termin","itinerary.label":"Raspored",
+    "s1.title":"Zadarska tržnica — Pijaca","s1.desc":"Jutarnji obilazak zadarske tržnice. Lokalni prodavači, sezonsko voće i povrće, razgovor s ribarima i povrtlarima.",
+    "s2.title":"Kušaonica maslinovih ulja","s2.desc":"Posjet obiteljskom masliniku. Degustacija 4 sorte ekstra djevičanskog ulja uz domaći kruh.",
+    "s3.title":"Paški sir & lokalni sirevi","s3.desc":"Degustacija autohtonih sireva — od mladog paškog do odležanog tvrdog. Priča o paškim ovcama i ručnoj izradi.",
+    "s4.title":"Konoba — Ručak & degustacija vina","s4.desc":"Ručak u autentičnoj konobi: pršut, marinirana riba, peka po narudžbi. Degustacija lokalnih vina — maraština, babić i prošek.",
+    "s5.title":"Slatki završetak","s5.desc":"Degustacija dalmatinskih slastica — rozata, fritule, kroštule i arancini. Kava i razgovor o svemu što smo okusili.",
+    "tasting.label":"Što ćete kušati","tasting.title":"Okusi koje <em>nećete zaboraviti</em>",
+    "t1.name":"Maslinovo ulje","t1.desc":"Ekstra djevičansko ulje s obroncka Velebita — zlatno-zelene boje, voćno s gorko-pikantnom završnicom.",
+    "t2.name":"Paški sir","t2.desc":"Jedinstven okus zahvaljujući ovcama koje pasu na aromatičnom bilju Paga. Ručno pravljeno, odležano u maslinovom ulju.",
+    "t3.name":"Lokalna vina","t3.desc":"Maraština — suho bijelo s mineralnom notom. Babić — crno s aromom višnje. Prošek — slatko desertno vino.",
+    "details.label":"Detalji ture","details.title":"Što je <em>uključeno</em>",
+    "inc.title":"Uključeno u cijenu","exc.title":"Nije uključeno",
+    "inc.1":"Licencirana turistička vodiča (Zdenka Rinčić)","inc.2":"Sve degustacije (maslinovo ulje, sir, vino)","inc.3":"Ručak u konobi (pršut, riba, salate)","inc.4":"Prijevoz između lokacija","inc.5":"Degustacija slastica","inc.6":"Mali pokloni od domaćih proizvođača",
+    "exc.1":"Prijevoz do polazišne točke","exc.2":"Kupovina kod proizvođača","exc.3":"Dodatna pića izvan degustacije","exc.4":"Napojnica (dobrodošla, ali nije obavezna)",
+    "gallery.label":"Galerija","gallery.title":"Hrana i <em>tradicija</em>",
+    "booking.label":"Rezervacija","booking.title":"Odaberite <em>termin</em>",
+    "booking.desc":"Gastro tura polazi ujutro svaki dan. Za grupe 6+ osoba preporučujemo rezervaciju tjedan dana unaprijed.",
+    "contact.phone":"Pon–Ned, 08:00–20:00","contact.email":"Odgovaram unutar 2 sata","footer.rights":"Sva prava pridržana",
+  },
+  en: {
+    "nav.about":"About","nav.tours":"Tours","nav.gallery":"Gallery","nav.book":"Book Now","nav.reviews":"Reviews",
+    "hero.eyebrow":"Gastronomy Tour · Zadar & surroundings","hero.title":"Tastes of <em>Dalmatia</em>",
+    "meta.dur":"Duration","meta.grp":"People","meta.lng":"Languages","meta.price":"Per person",
+    "overview.label":"Tour Overview","overview.title":"Olive oil, Pag cheese<br><em>and local wine</em>",
+    "card.price":"Price","card.per":"person","card.dur":"Duration","card.dur.val":"4 hours","card.grp":"Group size","card.grp.val":"Max 10 people","card.lng":"Languages",
+    "desc.p1":"Dalmatian cuisine is not just food — it is culture, tradition and geography on a single plate. This tour takes you behind the scenes of Zadar's market, into family konobas and to producers that tourists never find on their own.",
+    "desc.p2":"We will taste extra virgin olive oil from the slopes of Velebit, Pag cheese aged in sea salt, sparkling moravac wines from Zadar vineyards and fresh oysters — all with the personal story of each producer.",
+    "desc.p3":"The tour is suitable for all levels of gastronomic knowledge — from enthusiasts to those who simply want to understand why Dalmatian cuisine dominates world menus.",
+    "cta.book":"Book your date","itinerary.label":"Schedule",
+    "s1.title":"Zadar Market — Pijaca","s1.desc":"Morning stroll through Zadar market. Local vendors, seasonal produce, conversation with fishermen and farmers.",
+    "s2.title":"Olive Oil Tasting","s2.desc":"Visit to a family olive grove. Tasting of 4 varieties of extra virgin oil with homemade bread.",
+    "s3.title":"Pag Cheese & Local Cheeses","s3.desc":"Tasting of indigenous cheeses — from young Pag to aged hard cheese. Story of Pag sheep and centuries-old hand-crafting.",
+    "s4.title":"Konoba — Lunch & Wine Tasting","s4.desc":"Lunch at an authentic konoba: prosciutto, marinated fish, peka on order. Tasting of local wines — maraština, babić and prošek.",
+    "s5.title":"Sweet Finale","s5.desc":"Tasting of Dalmatian sweets — rozata, fritule, kroštule and arancini. Coffee and conversation about everything we tasted.",
+    "tasting.label":"What you will taste","tasting.title":"Flavours you <em>won't forget</em>",
+    "t1.name":"Olive Oil","t1.desc":"Extra virgin oil from the Velebit slopes — golden-green in colour, fruity with a bitter-spicy finish.",
+    "t2.name":"Pag Cheese","t2.desc":"Unique flavour thanks to sheep grazing on Pag's aromatic herbs. Hand-made, aged in olive oil.",
+    "t3.name":"Local Wines","t3.desc":"Maraština — dry white with a mineral note. Babić — red with cherry aroma. Prošek — sweet dessert wine.",
+    "details.label":"Tour Details","details.title":"What's <em>included</em>",
+    "inc.title":"Included in price","exc.title":"Not included",
+    "inc.1":"Licensed tourist guide (Zdenka Rinčić)","inc.2":"All tastings (olive oil, cheese, wine)","inc.3":"Lunch at konoba (prosciutto, fish, salads)","inc.4":"Transport between locations","inc.5":"Sweet tasting","inc.6":"Small gifts from local producers",
+    "exc.1":"Transport to starting point","exc.2":"Purchases at producers","exc.3":"Additional drinks outside tastings","exc.4":"Tip (welcome but not mandatory)",
+    "gallery.label":"Gallery","gallery.title":"Food and <em>tradition</em>",
+    "booking.label":"Reservation","booking.title":"Choose your <em>date</em>",
+    "booking.desc":"Gastro tour departs every morning. For groups of 6+, we recommend booking a week in advance.",
+    "contact.phone":"Mon–Sun, 08:00–20:00","contact.email":"I reply within 2 hours","footer.rights":"All rights reserved",
+  },
+  fr: {
+    "nav.about":"À Propos","nav.tours":"Visites","nav.gallery":"Galerie","nav.book":"Réserver","nav.reviews":"Avis",
+    "hero.eyebrow":"Visite gastronomique · Zadar & environs","hero.title":"Saveurs de <em>Dalmatie</em>",
+    "meta.dur":"Durée","meta.grp":"Personnes","meta.lng":"Langues","meta.price":"Par personne",
+    "overview.label":"Aperçu de la visite","overview.title":"Huile d'olive, fromage de Pag<br><em>et vin local</em>",
+    "card.price":"Prix","card.per":"personne","card.dur":"Durée","card.dur.val":"4 heures","card.grp":"Taille du groupe","card.grp.val":"Max 10 personnes","card.lng":"Langues",
+    "desc.p1":"La cuisine dalmate n'est pas seulement de la nourriture — c'est une culture, une tradition et une géographie dans une seule assiette. Cette visite vous emmène dans les coulisses du marché de Zadar, dans des konobas familiales et chez des producteurs que les touristes ne trouvent jamais seuls.",
+    "desc.p2":"Nous dégusterons de l'huile d'olive extra vierge des pentes du Velebit, du fromage de Pag affiné au sel de mer, des vins pétillants moravac des vignobles de Zadar et des huîtres fraîches — chacun accompagné de l'histoire personnelle du producteur.",
+    "desc.p3":"La visite convient à tous les niveaux de connaissance gastronomique — des enthousiastes à ceux qui veulent simplement comprendre pourquoi la cuisine dalmate domine les menus du monde.",
+    "cta.book":"Réserver une date","itinerary.label":"Programme",
+    "s1.title":"Marché de Zadar — Pijaca","s1.desc":"Promenade matinale au marché de Zadar. Vendeurs locaux, produits de saison, conversation avec les pêcheurs et maraîchers.",
+    "s2.title":"Dégustation d'huiles d'olive","s2.desc":"Visite d'un oliveraie familiale. Dégustation de 4 variétés d'huile extra vierge avec du pain fait maison.",
+    "s3.title":"Fromage de Pag & fromages locaux","s3.desc":"Dégustation de fromages indigènes — du jeune Pag à l'affiné dur. Histoire des moutons de Pag et de l'artisanat séculaire.",
+    "s4.title":"Konoba — Déjeuner & dégustation de vins","s4.desc":"Déjeuner dans une konoba authentique : prosciutto, poisson mariné, peka sur commande. Dégustation de vins locaux — maraština, babić et prošek.",
+    "s5.title":"Finale sucrée","s5.desc":"Dégustation de douceurs dalmates — rozata, fritule, kroštule et arancini. Café et conversation sur tout ce que nous avons goûté.",
+    "tasting.label":"Ce que vous goûterez","tasting.title":"Des saveurs <em>inoubliables</em>",
+    "t1.name":"Huile d'olive","t1.desc":"Huile extra vierge des pentes du Velebit — dorée-verte, fruitée avec une finale amère-épicée.",
+    "t2.name":"Fromage de Pag","t2.desc":"Saveur unique grâce aux moutons paissant sur les herbes aromatiques de Pag. Fait main, affiné dans l'huile d'olive.",
+    "t3.name":"Vins locaux","t3.desc":"Maraština — blanc sec avec une note minérale. Babić — rouge aux arômes de cerise. Prošek — vin de dessert doux.",
+    "details.label":"Détails de la visite","details.title":"Ce qui est <em>inclus</em>",
+    "inc.title":"Inclus dans le prix","exc.title":"Non inclus",
+    "inc.1":"Guide touristique agréée (Zdenka Rinčić)","inc.2":"Toutes les dégustations (huile, fromage, vin)","inc.3":"Déjeuner à la konoba (prosciutto, poisson, salades)","inc.4":"Transport entre les sites","inc.5":"Dégustation de douceurs","inc.6":"Petits cadeaux des producteurs locaux",
+    "exc.1":"Transport jusqu'au point de départ","exc.2":"Achats chez les producteurs","exc.3":"Boissons supplémentaires hors dégustation","exc.4":"Pourboire (bienvenu mais pas obligatoire)",
+    "gallery.label":"Galerie","gallery.title":"Nourriture et <em>tradition</em>",
+    "booking.label":"Réservation","booking.title":"Choisissez votre <em>date</em>",
+    "booking.desc":"La visite gastronomique part chaque matin. Pour les groupes de 6+, nous recommandons de réserver une semaine à l'avance.",
+    "contact.phone":"Lun–Dim, 08h00–20h00","contact.email":"Je réponds dans les 2 heures","footer.rights":"Tous droits réservés",
+  }
+};
+
+let currentLang = 'hr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (TRANSLATIONS[lang]?.[key]) el.textContent = TRANSLATIONS[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (TRANSLATIONS[lang]?.[key]) el.innerHTML = TRANSLATIONS[lang][key];
+  });
+  document.documentElement.lang = lang;
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>
