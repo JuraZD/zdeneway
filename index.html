@@ -1,734 +1,694 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 7c0dd6113c351e0c92e6e15819beb017d453fcc7..a3bdaec6d49841f146f04ac5b0f6b8837e79d025 100644
---- a/index.html
-+++ b/index.html
-@@ -1,30 +1,31 @@
- <!DOCTYPE html>
- <html lang="hr">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+<meta name="description" content="Privatne ture u Zadru sa Zdenkom Rinčić: stari grad, otoci i gastro iskustva na hrvatskom, engleskom i francuskom jeziku." />
-   <title>Zadar Private Tours – Zdenka Rinčić</title>
-   <link rel="preconnect" href="https://fonts.googleapis.com" />
-   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
- 
-   <style>
-     :root {
-       --crna:      #000000;
-       --crna-mid:  #111111;
-       --crvena:    #C0392B;
-       --crvena-lt: #D44637;
-       --zlatna:    #C9A84C;
-       --bez:       #F5F0E8;
-       --bijela:    #FFFFFF;
-       --text-dark: #1a1a1a;
-       --text-mid:  #4a4a4a;
-       --text-lt:   #888;
-       --font-display: 'Cormorant Garamond', serif;
-       --font-head:    'Playfair Display', serif;
-       --font-body:    'DM Sans', sans-serif;
-     }
- 
-     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-     html { scroll-behavior: smooth; }
- 
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Privatne ture u Zadru sa Zdenkom Rinčić: stari grad, otoci i gastro iskustva na hrvatskom, engleskom i francuskom jeziku." />
+  <title>Zadar Private Tours – Zdenka Rinčić</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --crna:      #000000;
+      --crna-mid:  #111111;
+      --crvena:    #C0392B;
+      --crvena-lt: #D44637;
+      --zlatna:    #C9A84C;
+      --bez:       #F5F0E8;
+      --bijela:    #FFFFFF;
+      --text-dark: #1a1a1a;
+      --text-mid:  #4a4a4a;
+      --text-lt:   #888;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-head:    'Playfair Display', serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
 @@ -351,60 +352,94 @@
-     #booking {
-       background: linear-gradient(135deg, var(--bez) 0%, var(--bez) 100%);
-     }
-     .booking-wrap {
-       display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem;
-       align-items: start;
-     }
-     .booking-info .section-title { margin-bottom: 1rem; }
-     .booking-info p {
-       font-family: var(--font-display);
-       font-size: 1.1rem; font-weight: 300;
-       color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem;
-     }
-     .contact-items { display: flex; flex-direction: column; gap: 1rem; }
-     .contact-item {
-       display: flex; align-items: center; gap: 1rem;
-       font-size: .9rem; color: var(--text-mid);
-     }
-     .contact-icon {
-       width: 40px; height: 40px; border-radius: 50%;
-       background: var(--crvena); display: flex; align-items: center;
-       justify-content: center; color: white; font-size: 1rem;
-       flex-shrink: 0;
-     }
- 
-+    .cal-shell {
-+      position: relative;
-+      overflow: hidden;
-+      background: linear-gradient(180deg, rgba(192,57,43,.12) 0%, rgba(255,255,255,1) 55%);
-+      border: 2px solid rgba(192,57,43,.35);
-+      border-radius: 18px;
-+      padding: 1.1rem;
-+      box-shadow: 0 18px 46px rgba(0,0,0,.12);
-+    }
-+    .cal-shell::before {
-+      content: '';
-+      position: absolute; left: 0; right: 0; top: 0;
-+      height: 4px;
-+      background: linear-gradient(90deg, var(--crvena), var(--zlatna));
-+    }
-+    .cal-header {
-+      display: flex; align-items: center; justify-content: space-between;
-+      gap: .75rem; margin-bottom: .9rem; padding: 0 .2rem;
-+    }
-+    .cal-header h3 {
-+      font-family: var(--font-display); font-size: 1.25rem;
-+      font-weight: 500; color: var(--crna);
-+    }
-+    .cal-header span {
-+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
-+      color: var(--crvena); background: rgba(192,57,43,.1);
-+      border: 1px solid rgba(192,57,43,.25); padding: .35rem .55rem; border-radius: 999px;
-+    }
-     .cal-embed-wrap {
-       background: var(--bijela);
--      box-shadow: 0 8px 40px rgba(0,0,0,.1);
-+      border: 1px solid rgba(0,0,0,.08);
-+      border-radius: 16px;
-+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-       overflow: hidden;
-       min-height: 600px;
-     }
-     #my-cal-inline {
-       width: 100%;
-       min-height: 600px;
-     }
-+    .cal-note {
-+      margin-top: .7rem; font-size: .78rem; color: var(--text-lt);
-+      letter-spacing: .03em;
-+    }
- 
-     /* ─── REVIEWS ─── */
-     #reviews { background: var(--bez); }
-     .reviews-grid {
-       display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-       margin-top: 3rem;
-     }
-     .review-card {
-       background: var(--bijela); padding: 2rem;
-       box-shadow: 0 2px 12px rgba(0,0,0,.06);
-       position: relative;
-     }
-     .review-card::before {
-       content: '"';
-       position: absolute; top: 1rem; right: 1.5rem;
-       font-family: var(--font-display);
-       font-size: 5rem; font-weight: 300;
-       color: var(--crvena); opacity: .15; line-height: 1;
-     }
-     .stars { color: var(--zlatna); font-size: 1rem; margin-bottom: 1rem; }
-     .review-text {
-       font-family: var(--font-display);
-       font-size: 1.05rem; font-weight: 300; font-style: italic;
-       color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem;
-     }
+    #booking {
+      background: linear-gradient(135deg, var(--bez) 0%, var(--bez) 100%);
+    }
+    .booking-wrap {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem;
+      align-items: start;
+    }
+    .booking-info .section-title { margin-bottom: 1rem; }
+    .booking-info p {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 300;
+      color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: .9rem; color: var(--text-mid);
+    }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--crvena); display: flex; align-items: center;
+      justify-content: center; color: white; font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cal-shell {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(192,57,43,.12) 0%, rgba(255,255,255,1) 55%);
+      border: 2px solid rgba(192,57,43,.35);
+      border-radius: 18px;
+      padding: 1.1rem;
+      box-shadow: 0 18px 46px rgba(0,0,0,.12);
+    }
+    .cal-shell::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--crvena), var(--zlatna));
+    }
+    .cal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .75rem; margin-bottom: .9rem; padding: 0 .2rem;
+    }
+    .cal-header h3 {
+      font-family: var(--font-display); font-size: 1.25rem;
+      font-weight: 500; color: var(--crna);
+    }
+    .cal-header span {
+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--crvena); background: rgba(192,57,43,.1);
+      border: 1px solid rgba(192,57,43,.25); padding: .35rem .55rem; border-radius: 999px;
+    }
+    .cal-embed-wrap {
+      background: var(--bijela);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+      overflow: hidden;
+      min-height: 600px;
+    }
+    #my-cal-inline {
+      width: 100%;
+      min-height: 600px;
+    }
+    .cal-note {
+      margin-top: .7rem; font-size: .78rem; color: var(--text-lt);
+      letter-spacing: .03em;
+    }
+
+    /* ─── REVIEWS ─── */
+    #reviews { background: var(--bez); }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: var(--bijela); padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      position: absolute; top: 1rem; right: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 5rem; font-weight: 300;
+      color: var(--crvena); opacity: .15; line-height: 1;
+    }
+    .stars { color: var(--zlatna); font-size: 1rem; margin-bottom: 1rem; }
+    .review-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 300; font-style: italic;
+      color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem;
+    }
 @@ -436,51 +471,53 @@
-     .footer-tagline {
-       font-size: .88rem; color: rgba(255,255,255,.45);
-       line-height: 1.6; max-width: 280px;
-     }
-     .footer-col h4 {
-       font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
-       color: var(--zlatna); margin-bottom: 1.2rem;
-     }
-     .footer-col ul { list-style: none; }
-     .footer-col ul li { margin-bottom: .6rem; }
-     .footer-col ul a {
-       font-size: .88rem; color: rgba(255,255,255,.5);
-       text-decoration: none; transition: color .2s;
-     }
-     .footer-col ul a:hover { color: var(--zlatna); }
-     .footer-bottom {
-       padding-top: 2rem;
-       display: flex; justify-content: space-between; align-items: center;
-       font-size: .78rem; color: rgba(255,255,255,.3);
-     }
- 
- 
-     /* ─── RESPONSIVE ─── */
-     @media (max-width: 900px) {
-       nav { padding: 1rem 1.5rem; }
--      .nav-links { display: none; }
-+      .nav-links { display: flex; width: 100%; justify-content: space-between; gap: .8rem; order: 3; }
-+    .nav-links a { font-size: .7rem; }
-+    nav { flex-wrap: wrap; row-gap: .6rem; }
-       section { padding: 5rem 1.5rem; }
-       #about { grid-template-columns: 1fr; gap: 3rem; }
-       .about-badge { right: 0; bottom: -1rem; }
-       .gallery-grid {
-         grid-template-columns: 1fr 1fr;
-         grid-template-rows: auto;
-       }
-       .gallery-item:nth-child(1),
-       .gallery-item:nth-child(4) { grid-column: auto; grid-row: auto; }
-       .booking-wrap { grid-template-columns: 1fr; gap: 3rem; }
-       .reviews-grid { grid-template-columns: 1fr; }
-       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-       .form-row { grid-template-columns: 1fr; }
-     }
-   </style>
- </head>
- <body>
- 
- <!-- ─── NAVIGATION ─── -->
- <nav id="main-nav">
-   <a href="#hero" class="nav-logo">Zdenka <span>Rinčić</span></a>
- 
-   <ul class="nav-links">
-     <li><a href="#about"   data-i18n="nav.about">O Meni</a></li>
-     <li><a href="#tours"   data-i18n="nav.tours">Ture</a></li>
+    .footer-tagline {
+      font-size: .88rem; color: rgba(255,255,255,.45);
+      line-height: 1.6; max-width: 280px;
+    }
+    .footer-col h4 {
+      font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--zlatna); margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .6rem; }
+    .footer-col ul a {
+      font-size: .88rem; color: rgba(255,255,255,.5);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-col ul a:hover { color: var(--zlatna); }
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .78rem; color: rgba(255,255,255,.3);
+    }
+
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: flex; width: 100%; justify-content: space-between; gap: .8rem; order: 3; }
+    .nav-links a { font-size: .7rem; }
+    nav { flex-wrap: wrap; row-gap: .6rem; }
+      section { padding: 5rem 1.5rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .about-badge { right: 0; bottom: -1rem; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) { grid-column: auto; grid-row: auto; }
+      .booking-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">Zdenka <span>Rinčić</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#about"   data-i18n="nav.about">O Meni</a></li>
+    <li><a href="#tours"   data-i18n="nav.tours">Ture</a></li>
 @@ -497,250 +534,259 @@
- </nav>
- 
- <!-- ─── HERO ─── -->
- <section id="hero">
-   <div class="hero-bg"></div>
-   <div class="hero-overlay"></div>
-   <div class="hero-content">
-     <p class="hero-eyebrow" data-i18n="hero.eyebrow">Privatni turistički vodič · Zadar, Hrvatska</p>
-     <h1 class="hero-title">Otkrijte<br><em>pravi Zadar</em></h1>
-     <p class="hero-subtitle" data-i18n="hero.subtitle">
-       Autentična iskustva s licenciranom vodicom koja voli svoj grad
-     </p>
-     <a href="#booking" class="btn-primary" data-i18n="hero.cta1">Rezervirajte Turu</a>
-     <a href="#tours"   class="btn-outline"  data-i18n="hero.cta2">Pogledajte Ponudu</a>
-   </div>
-   <div class="scroll-hint" data-i18n="hero.scroll">Skrolajte</div>
- </section>
- 
- <!-- ─── ABOUT ─── -->
- <section id="about">
-   <div class="about-image-wrap">
-     <img
-       src="zdenka.jpg"
-       alt="Zdenka Rinčić – turistička vodiča"
-       class="about-image"
-+      loading="lazy"
-+      decoding="async"
-     />
-     <div class="about-badge">
--      <strong>3</strong>
-+      <strong>13</strong>
-       <span data-i18n="about.badge">godina iskustva</span>
-     </div>
-   </div>
- 
-   <div>
-     <p class="section-label" data-i18n="about.label">Vaš vodič</p>
-     <h2 class="section-title">Zdenka <em>Rinčić</em></h2>
-     <div class="section-divider"></div>
-     <p class="about-text" data-i18n="about.p1">
-       Živim u Zadru, svoju strast za poviješću i kulturom Dalmacije pretočila sam u nezaboravna iskustva za goste iz cijelog svijeta.
-     </p>
-     <p class="about-text" data-i18n="about.p2">
-       Kao licencirana turistička vodiča Zadarske županije, govorim engleski i francuski. Svaka tura je personalizirana — nema dva ista izleta.
-     </p>
- 
-     <div class="about-stats">
-       <div class="stat-item">
-         <div class="stat-num">4.9★</div>
-         <div class="stat-lbl" data-i18n="about.stat1">TripAdvisor</div>
-       </div>
-       <div class="stat-item">
-         <div class="stat-num">500+</div>
-         <div class="stat-lbl" data-i18n="about.stat2">Zadovoljnih gostiju</div>
-       </div>
-       <div class="stat-item">
-         <div class="stat-num">18</div>
-         <div class="stat-lbl" data-i18n="about.stat3">Različitih tura</div>
-       </div>
-     </div>
-   </div>
- </section>
- 
- <!-- ─── TOURS ─── -->
- <section id="tours">
-   <div class="tours-header">
-     <p class="section-label" data-i18n="tours.label">Što nudim</p>
-     <h2 class="section-title">Odaberite svoju <em>avanturu</em></h2>
-     <div class="section-divider"></div>
-   </div>
- 
-   <div class="tours-grid">
- 
-     <!-- Tour 1 -->
-     <div class="tour-card">
-       <div class="tour-img-wrap">
-         <img src="https://images.unsplash.com/photo-1668450418518-1b3538a02537?w=700&q=85"
--             alt="Zadar Stari Grad" class="tour-img" />
-+             alt="Zadar Stari Grad" class="tour-img" loading="lazy" decoding="async" />
-         <div class="tour-tag" data-i18n="tours.tag.popular">Najpopularnije</div>
-       </div>
-       <div class="tour-body">
-         <div class="tour-meta">
-           <span class="dur" data-i18n="tours.t1.dur">2,5 sata</span>
-           <span class="grp" data-i18n="tours.t1.grp">Max 8 osoba</span>
-           <span class="lng" data-i18n="tours.t1.lng">EN · FR · HR</span>
-         </div>
-         <h3 class="tour-title" data-i18n="tours.t1.title">Zadar Stari Grad – Historijska Šetnja</h3>
-         <p class="tour-desc" data-i18n="tours.t1.desc">
-           Provedite se kroz rimski forum, crkvu sv. Donata, Morske orgulje i Pozdrav suncu. Priče koje ne piše ni jedan turistički vodič.
-         </p>
-         <div class="tour-footer">
-           <div class="tour-price"><sup>€</sup>45 <small data-i18n="tours.perperson">/ osobi</small></div>
-           <a href="tour-stari-grad.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
-         </div>
-       </div>
-     </div>
- 
-     <!-- Tour 2 -->
-     <div class="tour-card">
-       <div class="tour-img-wrap">
-         <img src="https://live.staticflickr.com/65535/53400685629_b54e5f3bb2_b.jpg"
--             alt="Otok Ugljan – pogled prema kopnu" class="tour-img" />
-+             alt="Otok Ugljan – pogled prema kopnu" class="tour-img" loading="lazy" decoding="async" />
-         <div class="tour-tag" data-i18n="tours.tag.new" style="background:var(--crna-mid)">Novo</div>
-       </div>
-       <div class="tour-body">
-         <div class="tour-meta">
-           <span class="dur" data-i18n="tours.t2.dur">8 sati</span>
-           <span class="grp" data-i18n="tours.t2.grp">Max 6 osoba</span>
-           <span class="lng" data-i18n="tours.t2.lng">EN · FR</span>
-         </div>
-         <h3 class="tour-title" data-i18n="tours.t2.title">Otoci Zadarskog arhipelaga</h3>
-         <p class="tour-desc" data-i18n="tours.t2.desc">
-           Cjelodnevna privatna brodska tura do skrivenih plaža Dugog otoka, kristalnih uvala i autentičnih ribarskih mjesta.
-         </p>
-         <div class="tour-footer">
-           <div class="tour-price"><sup>€</sup>120 <small data-i18n="tours.perperson">/ osobi</small></div>
-           <a href="tour-otoci.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
-         </div>
-       </div>
-     </div>
- 
-     <!-- Tour 3 -->
-     <div class="tour-card">
-       <div class="tour-img-wrap">
-         <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85"
--             alt="Dalmatinska gastronomija" class="tour-img" />
-+             alt="Dalmatinska gastronomija" class="tour-img" loading="lazy" decoding="async" />
-         <div class="tour-tag" data-i18n="tours.tag.food" style="background: var(--zlatna); color: var(--crna)">Gastronomija</div>
-       </div>
-       <div class="tour-body">
-         <div class="tour-meta">
-           <span class="dur" data-i18n="tours.t3.dur">4 sata</span>
-           <span class="grp" data-i18n="tours.t3.grp">Max 10 osoba</span>
-           <span class="lng" data-i18n="tours.t3.lng">EN · FR · HR</span>
-         </div>
-         <h3 class="tour-title" data-i18n="tours.t3.title">Okusi Dalmacije – Hrana & Vino</h3>
-         <p class="tour-desc" data-i18n="tours.t3.desc">
-           Maslinova ulja, paški sir, morski plodovi i lokalna vina — gastro tura kroz tržnicu, konobe i obiteljske vinarije.
-         </p>
-         <div class="tour-footer">
-           <div class="tour-price"><sup>€</sup>75 <small data-i18n="tours.perperson">/ osobi</small></div>
-           <a href="tour-gastro.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
-         </div>
-       </div>
-     </div>
- 
-   </div>
- </section>
- 
- <!-- ─── GALLERY ─── -->
- <section id="gallery">
-   <p class="section-label" data-i18n="gallery.label">Vizualni dnevnik</p>
-   <h2 class="section-title">Zadar kroz <em>objektiv</em></h2>
-   <div class="section-divider"></div>
- 
-   <div class="gallery-grid">
-     <div class="gallery-item" data-caption="Zadar Stari Grad">
--      <img src="https://images.unsplash.com/photo-1661178434473-6daf1940d913?w=1200&q=85" alt="Zadar stari grad panorama" />
-+      <img src="https://images.unsplash.com/photo-1661178434473-6daf1940d913?w=1200&q=85" alt="Zadar stari grad panorama" loading="lazy" decoding="async" />
-     </div>
-     <div class="gallery-item" data-caption="Crkva sv. Donata">
--      <img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=700&q=85" alt="Crkva sv. Donata i Rimski forum" />
-+      <img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=700&q=85" alt="Crkva sv. Donata i Rimski forum" loading="lazy" decoding="async" />
-     </div>
-     <div class="gallery-item" data-caption="Zadarska riva">
--      <img src="https://images.unsplash.com/photo-1689364481643-3753f7cda19d?w=700&q=85" alt="Zadarska riva promenada" />
-+      <img src="https://images.unsplash.com/photo-1689364481643-3753f7cda19d?w=700&q=85" alt="Zadarska riva promenada" loading="lazy" decoding="async" />
-     </div>
-     <div class="gallery-item" data-caption="Dalmatinska gastronomija">
--      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=85" alt="Dalmatinska gastronomija" />
-+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=85" alt="Dalmatinska gastronomija" loading="lazy" decoding="async" />
-     </div>
-     <div class="gallery-item" data-caption="Morske orgulje">
--      <img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=700&q=85" alt="Morske orgulje" />
-+      <img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=700&q=85" alt="Morske orgulje" loading="lazy" decoding="async" />
-     </div>
-     <div class="gallery-item" data-caption="Pozdrav suncu">
--      <img src="https://images.unsplash.com/photo-1539257210701-c866bec33144?w=700&q=85" alt="Pozdrav suncu iz zraka" />
-+      <img src="https://images.unsplash.com/photo-1539257210701-c866bec33144?w=700&q=85" alt="Pozdrav suncu iz zraka" loading="lazy" decoding="async" />
-     </div>
-   </div>
- </section>
- 
- <!-- ─── BOOKING ─── -->
- <section id="booking">
-   <div class="booking-wrap">
- 
-     <div class="booking-info">
-       <p class="section-label" data-i18n="booking.label">Rezervacija</p>
-       <h2 class="section-title">Planirajmo vaš <em>savršeni dan</em></h2>
-       <div class="section-divider"></div>
-       <p data-i18n="booking.desc">
-         Popunite obrazac i primite potvrdu unutar 2 sata. Plaćanje je sigurno putem Stripe-a. Otkaz besplatan do 48 sati unaprijed.
-       </p>
-       <div class="contact-items">
-         <div class="contact-item">
-           <div class="contact-icon">📞</div>
-           <div>
-             <strong>+385 91 3345170</strong><br>
-             <small style="color:var(--text-lt)" data-i18n="booking.phone.label">Pon–Ned, 08:00–20:00</small>
-           </div>
-         </div>
-         <div class="contact-item">
-           <div class="contact-icon">✉️</div>
-           <div>
-             <strong><a href="mailto:zdenka2022@gmail.com">zdenka2022@gmail.com</a></strong><br>
-             <small style="color:var(--text-lt)" data-i18n="booking.email.label">Odgovaram unutar 2 sata</small>
-           </div>
-         </div>
-         <div class="contact-item">
-           <div class="contact-icon">📍</div>
-           <div>
-             <strong data-i18n="booking.location">Zadar, Hrvatska</strong><br>
-             <small style="color:var(--text-lt)" data-i18n="booking.meeting">Dogovorit ćemo mjesto susreta</small>
-           </div>
-         </div>
-       </div>
-     </div>
- 
--    <div class="cal-embed-wrap">
--      <div id="my-cal-inline"></div>
--      <script type="text/javascript">
--        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
--        Cal("init", {origin:"https://cal.com"});
--        Cal("inline", {
--          elementOrSelector: "#my-cal-inline",
--          calLink: "jurica-devic-d08io2/zadar-tour",
--          layout: "month_view"
--        });
--        Cal("ui", {
--          styles: { branding: { brandColor: "#C0392B" } },
--          hideEventTypeDetails: false,
--          layout: "month_view"
--        });
--      </script>
-+    <div class="cal-shell">
-+      <div class="cal-header">
-+        <h3 data-i18n="booking.cal.title">Kalendar dostupnih termina</h3>
-+        <span data-i18n="booking.cal.badge">Brza potvrda</span>
-+      </div>
-+      <div class="cal-embed-wrap">
-+        <div id="my-cal-inline"></div>
-+        <script type="text/javascript">
-+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-+          Cal("init", {origin:"https://cal.com"});
-+          Cal("inline", {
-+            elementOrSelector: "#my-cal-inline",
-+            calLink: "jurica-devic-d08io2/zadar-tour",
-+            layout: "month_view"
-+          });
-+          Cal("ui", {
-+            styles: { branding: { brandColor: "#C0392B" } },
-+            hideEventTypeDetails: false,
-+            layout: "month_view"
-+          });
-+        </script>
-+      </div>
-+      <p class="cal-note" data-i18n="booking.cal.note">Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.</p>
-     </div>
- 
-   </div>
- </section>
- 
- <!-- ─── REVIEWS ─── -->
- <section id="reviews">
-   <p class="section-label" data-i18n="reviews.label">Što kažu gosti</p>
-   <h2 class="section-title">Autentične <em>recenzije</em></h2>
-   <div class="section-divider"></div>
- 
-   <div class="reviews-grid">
-     <div class="review-card">
-       <div class="stars">★★★★★</div>
-       <p class="review-text" data-i18n="reviews.r1.text">
-         "Zdenka je bila nevjerojatna! Pokazala nam je mjesta koja bismo sami nikad pronašli. Tura o rimskom forumu bila je posebno fascinantna."
-       </p>
-       <div class="reviewer">
-         <div class="reviewer-avatar">S</div>
-         <div>
-           <div class="reviewer-name">Sophie M.</div>
-           <div class="reviewer-origin">🇩🇪 München, Njemačka</div>
-         </div>
-       </div>
-     </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Privatni turistički vodič · Zadar, Hrvatska</p>
+    <h1 class="hero-title">Otkrijte<br><em>pravi Zadar</em></h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
+      Autentična iskustva s licenciranom vodicom koja voli svoj grad
+    </p>
+    <a href="#booking" class="btn-primary" data-i18n="hero.cta1">Rezervirajte Turu</a>
+    <a href="#tours"   class="btn-outline"  data-i18n="hero.cta2">Pogledajte Ponudu</a>
+  </div>
+  <div class="scroll-hint" data-i18n="hero.scroll">Skrolajte</div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-image-wrap">
+    <img
+      src="zdenka.jpg"
+      alt="Zdenka Rinčić – turistička vodiča"
+      class="about-image"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="about-badge">
+      <strong>13</strong>
+      <span data-i18n="about.badge">godina iskustva</span>
+    </div>
+  </div>
+
+  <div>
+    <p class="section-label" data-i18n="about.label">Vaš vodič</p>
+    <h2 class="section-title">Zdenka <em>Rinčić</em></h2>
+    <div class="section-divider"></div>
+    <p class="about-text" data-i18n="about.p1">
+      Živim u Zadru, svoju strast za poviješću i kulturom Dalmacije pretočila sam u nezaboravna iskustva za goste iz cijelog svijeta.
+    </p>
+    <p class="about-text" data-i18n="about.p2">
+      Kao licencirana turistička vodiča Zadarske županije, govorim engleski i francuski. Svaka tura je personalizirana — nema dva ista izleta.
+    </p>
+
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-lbl" data-i18n="about.stat1">TripAdvisor</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-lbl" data-i18n="about.stat2">Zadovoljnih gostiju</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">18</div>
+        <div class="stat-lbl" data-i18n="about.stat3">Različitih tura</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TOURS ─── -->
+<section id="tours">
+  <div class="tours-header">
+    <p class="section-label" data-i18n="tours.label">Što nudim</p>
+    <h2 class="section-title">Odaberite svoju <em>avanturu</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="tours-grid">
+
+    <!-- Tour 1 -->
+    <div class="tour-card">
+      <div class="tour-img-wrap">
+        <img src="https://images.unsplash.com/photo-1668450418518-1b3538a02537?w=700&q=85"
+             alt="Zadar Stari Grad" class="tour-img" loading="lazy" decoding="async" />
+        <div class="tour-tag" data-i18n="tours.tag.popular">Najpopularnije</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span class="dur" data-i18n="tours.t1.dur">2,5 sata</span>
+          <span class="grp" data-i18n="tours.t1.grp">Max 8 osoba</span>
+          <span class="lng" data-i18n="tours.t1.lng">EN · FR · HR</span>
+        </div>
+        <h3 class="tour-title" data-i18n="tours.t1.title">Zadar Stari Grad – Historijska Šetnja</h3>
+        <p class="tour-desc" data-i18n="tours.t1.desc">
+          Provedite se kroz rimski forum, crkvu sv. Donata, Morske orgulje i Pozdrav suncu. Priče koje ne piše ni jedan turistički vodič.
+        </p>
+        <div class="tour-footer">
+          <div class="tour-price"><sup>€</sup>45 <small data-i18n="tours.perperson">/ osobi</small></div>
+          <a href="tour-stari-grad.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour 2 -->
+    <div class="tour-card">
+      <div class="tour-img-wrap">
+        <img src="https://live.staticflickr.com/65535/53400685629_b54e5f3bb2_b.jpg"
+             alt="Otok Ugljan – pogled prema kopnu" class="tour-img" loading="lazy" decoding="async" />
+        <div class="tour-tag" data-i18n="tours.tag.new" style="background:var(--crna-mid)">Novo</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span class="dur" data-i18n="tours.t2.dur">8 sati</span>
+          <span class="grp" data-i18n="tours.t2.grp">Max 6 osoba</span>
+          <span class="lng" data-i18n="tours.t2.lng">EN · FR</span>
+        </div>
+        <h3 class="tour-title" data-i18n="tours.t2.title">Otoci Zadarskog arhipelaga</h3>
+        <p class="tour-desc" data-i18n="tours.t2.desc">
+          Cjelodnevna privatna brodska tura do skrivenih plaža Dugog otoka, kristalnih uvala i autentičnih ribarskih mjesta.
+        </p>
+        <div class="tour-footer">
+          <div class="tour-price"><sup>€</sup>120 <small data-i18n="tours.perperson">/ osobi</small></div>
+          <a href="tour-otoci.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour 3 -->
+    <div class="tour-card">
+      <div class="tour-img-wrap">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85"
+             alt="Dalmatinska gastronomija" class="tour-img" loading="lazy" decoding="async" />
+        <div class="tour-tag" data-i18n="tours.tag.food" style="background: var(--zlatna); color: var(--crna)">Gastronomija</div>
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta">
+          <span class="dur" data-i18n="tours.t3.dur">4 sata</span>
+          <span class="grp" data-i18n="tours.t3.grp">Max 10 osoba</span>
+          <span class="lng" data-i18n="tours.t3.lng">EN · FR · HR</span>
+        </div>
+        <h3 class="tour-title" data-i18n="tours.t3.title">Okusi Dalmacije – Hrana & Vino</h3>
+        <p class="tour-desc" data-i18n="tours.t3.desc">
+          Maslinova ulja, paški sir, morski plodovi i lokalna vina — gastro tura kroz tržnicu, konobe i obiteljske vinarije.
+        </p>
+        <div class="tour-footer">
+          <div class="tour-price"><sup>€</sup>75 <small data-i18n="tours.perperson">/ osobi</small></div>
+          <a href="tour-gastro.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery">
+  <p class="section-label" data-i18n="gallery.label">Vizualni dnevnik</p>
+  <h2 class="section-title">Zadar kroz <em>objektiv</em></h2>
+  <div class="section-divider"></div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item" data-caption="Zadar Stari Grad">
+      <img src="https://images.unsplash.com/photo-1661178434473-6daf1940d913?w=1200&q=85" alt="Zadar stari grad panorama" loading="lazy" decoding="async" />
+    </div>
+    <div class="gallery-item" data-caption="Crkva sv. Donata">
+      <img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=700&q=85" alt="Crkva sv. Donata i Rimski forum" loading="lazy" decoding="async" />
+    </div>
+    <div class="gallery-item" data-caption="Zadarska riva">
+      <img src="https://images.unsplash.com/photo-1689364481643-3753f7cda19d?w=700&q=85" alt="Zadarska riva promenada" loading="lazy" decoding="async" />
+    </div>
+    <div class="gallery-item" data-caption="Dalmatinska gastronomija">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=85" alt="Dalmatinska gastronomija" loading="lazy" decoding="async" />
+    </div>
+    <div class="gallery-item" data-caption="Morske orgulje">
+      <img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=700&q=85" alt="Morske orgulje" loading="lazy" decoding="async" />
+    </div>
+    <div class="gallery-item" data-caption="Pozdrav suncu">
+      <img src="https://images.unsplash.com/photo-1539257210701-c866bec33144?w=700&q=85" alt="Pozdrav suncu iz zraka" loading="lazy" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOKING ─── -->
+<section id="booking">
+  <div class="booking-wrap">
+
+    <div class="booking-info">
+      <p class="section-label" data-i18n="booking.label">Rezervacija</p>
+      <h2 class="section-title">Planirajmo vaš <em>savršeni dan</em></h2>
+      <div class="section-divider"></div>
+      <p data-i18n="booking.desc">
+        Popunite obrazac i primite potvrdu unutar 2 sata. Plaćanje je sigurno putem Stripe-a. Otkaz besplatan do 48 sati unaprijed.
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>+385 91 3345170</strong><br>
+            <small style="color:var(--text-lt)" data-i18n="booking.phone.label">Pon–Ned, 08:00–20:00</small>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong><a href="mailto:zdenka2022@gmail.com">zdenka2022@gmail.com</a></strong><br>
+            <small style="color:var(--text-lt)" data-i18n="booking.email.label">Odgovaram unutar 2 sata</small>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong data-i18n="booking.location">Zadar, Hrvatska</strong><br>
+            <small style="color:var(--text-lt)" data-i18n="booking.meeting">Dogovorit ćemo mjesto susreta</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-shell">
+      <div class="cal-header">
+        <h3 data-i18n="booking.cal.title">Kalendar dostupnih termina</h3>
+        <span data-i18n="booking.cal.badge">Brza potvrda</span>
+      </div>
+      <div class="cal-embed-wrap">
+        <div id="my-cal-inline"></div>
+        <script type="text/javascript">
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", {origin:"https://cal.com"});
+          Cal("inline", {
+            elementOrSelector: "#my-cal-inline",
+            calLink: "jurica-devic-d08io2/zadar-tour",
+            layout: "month_view"
+          });
+          Cal("ui", {
+            styles: { branding: { brandColor: "#C0392B" } },
+            hideEventTypeDetails: false,
+            layout: "month_view"
+          });
+        </script>
+      </div>
+      <p class="cal-note" data-i18n="booking.cal.note">Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section id="reviews">
+  <p class="section-label" data-i18n="reviews.label">Što kažu gosti</p>
+  <h2 class="section-title">Autentične <em>recenzije</em></h2>
+  <div class="section-divider"></div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text" data-i18n="reviews.r1.text">
+        "Zdenka je bila nevjerojatna! Pokazala nam je mjesta koja bismo sami nikad pronašli. Tura o rimskom forumu bila je posebno fascinantna."
+      </p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">S</div>
+        <div>
+          <div class="reviewer-name">Sophie M.</div>
+          <div class="reviewer-origin">🇩🇪 München, Njemačka</div>
+        </div>
+      </div>
+    </div>
 @@ -776,57 +822,57 @@
- </section>
- 
- <!-- ─── FOOTER ─── -->
- <footer>
-   <div class="footer-top">
-     <div>
-       <div class="footer-brand">Zdenka <em>Rinčić</em></div>
-       <p class="footer-tagline" data-i18n="footer.tagline">
-         Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2013. godine.
-       </p>
-     </div>
-     <div class="footer-col">
-       <h4 data-i18n="footer.col1.title">Ture</h4>
-       <ul>
-         <li><a href="#tours" data-i18n="tours.t1.title">Stari Grad Walking Tour</a></li>
-         <li><a href="#tours" data-i18n="tours.t2.title">Tura otocima</a></li>
-         <li><a href="#tours" data-i18n="tours.t3.title">Gastro tura</a></li>
-         <li><a href="#booking" data-i18n="footer.col1.custom">Privatne ture po mjeri</a></li>
-       </ul>
-     </div>
-     <div class="footer-col">
-       <h4 data-i18n="footer.col2.title">Kontakt</h4>
-       <ul>
-         <li><a href="tel:+38591334517">+385 91 3345170</a></li>
-         <li><a href="mailto:zdenka2022@gmail.com">zdenka2022@gmail.com</a></li>
--        <li><a href="#" data-i18n="footer.col2.ig">Instagram</a></li>
--        <li><a href="#" data-i18n="footer.col2.ta">TripAdvisor profil</a></li>
-+        <li><span data-i18n="footer.col2.ig">Instagram</span></li>
-+        <li><span data-i18n="footer.col2.ta">TripAdvisor profil</span></li>
-       </ul>
-     </div>
-   </div>
-   <div class="footer-bottom">
--    <span>© 2025 Zdenka Rinčić · Zadar Private Tours</span>
-+    <span>© 2026 Zdenka Rinčić · Zadar Private Tours</span>
-     <span data-i18n="footer.rights">Sva prava pridržana</span>
-   </div>
- </footer>
- 
- 
- <script>
- // ─── TRANSLATIONS ──────────────────────────────────────────────────────────────
- const TRANSLATIONS = {
-   hr: {
-     "nav.about": "O Meni",
-     "nav.tours": "Ture",
-     "nav.gallery": "Galerija",
-     "nav.book": "Rezervacija",
-     "nav.reviews": "Recenzije",
-     "hero.eyebrow": "Privatna turistička vodiča · Zadar, Hrvatska",
-     "hero.subtitle": "Autentična iskustva s licenciranom vodicom koja voli svoj grad",
-     "hero.cta1": "Rezervirajte Turu",
-     "hero.cta2": "Pogledajte Ponudu",
-     "hero.scroll": "Skrolajte",
-     "about.label": "Vaš vodič",
-     "about.badge": "godina iskustva",
-     "about.p1": "Rođena i odrasla u Zadru, svoju strast za poviješću i kulturom Dalmacije pretočila sam u nezaboravna iskustva za tisuće gostiju iz cijelog svijeta.",
-     "about.p2": "Kao licencirana turistička vodiča Zadarske županije, govorim engleski i francuski. Svaka tura je personalizirana — nema dva ista izleta.",
-     "about.stat1": "TripAdvisor ocjena",
-     "about.stat2": "Zadovoljnih gostiju",
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Zdenka <em>Rinčić</em></div>
+      <p class="footer-tagline" data-i18n="footer.tagline">
+        Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2013. godine.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col1.title">Ture</h4>
+      <ul>
+        <li><a href="#tours" data-i18n="tours.t1.title">Stari Grad Walking Tour</a></li>
+        <li><a href="#tours" data-i18n="tours.t2.title">Tura otocima</a></li>
+        <li><a href="#tours" data-i18n="tours.t3.title">Gastro tura</a></li>
+        <li><a href="#booking" data-i18n="footer.col1.custom">Privatne ture po mjeri</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.col2.title">Kontakt</h4>
+      <ul>
+        <li><a href="tel:+38591334517">+385 91 3345170</a></li>
+        <li><a href="mailto:zdenka2022@gmail.com">zdenka2022@gmail.com</a></li>
+        <li><span data-i18n="footer.col2.ig">Instagram</span></li>
+        <li><span data-i18n="footer.col2.ta">TripAdvisor profil</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Zdenka Rinčić · Zadar Private Tours</span>
+    <span data-i18n="footer.rights">Sva prava pridržana</span>
+  </div>
+</footer>
+
+
+<script>
+// ─── TRANSLATIONS ──────────────────────────────────────────────────────────────
+const TRANSLATIONS = {
+  hr: {
+    "nav.about": "O Meni",
+    "nav.tours": "Ture",
+    "nav.gallery": "Galerija",
+    "nav.book": "Rezervacija",
+    "nav.reviews": "Recenzije",
+    "hero.eyebrow": "Privatna turistička vodiča · Zadar, Hrvatska",
+    "hero.subtitle": "Autentična iskustva s licenciranom vodicom koja voli svoj grad",
+    "hero.cta1": "Rezervirajte Turu",
+    "hero.cta2": "Pogledajte Ponudu",
+    "hero.scroll": "Skrolajte",
+    "about.label": "Vaš vodič",
+    "about.badge": "godina iskustva",
+    "about.p1": "Rođena i odrasla u Zadru, svoju strast za poviješću i kulturom Dalmacije pretočila sam u nezaboravna iskustva za tisuće gostiju iz cijelog svijeta.",
+    "about.p2": "Kao licencirana turistička vodiča Zadarske županije, govorim engleski i francuski. Svaka tura je personalizirana — nema dva ista izleta.",
+    "about.stat1": "TripAdvisor ocjena",
+    "about.stat2": "Zadovoljnih gostiju",
 @@ -837,50 +883,53 @@ const TRANSLATIONS = {
-     "tours.tag.food": "Gastronomija",
-     "tours.t1.dur": "2,5 sata",
-     "tours.t1.grp": "Max 8 osoba",
-     "tours.t1.lng": "EN · FR · HR",
-     "tours.t1.title": "Zadar Stari Grad – Historijska Šetnja",
-     "tours.t1.desc": "Provedite se kroz rimski forum, crkvu sv. Donata, Morske orgulje i Pozdrav suncu. Priče koje ne piše ni jedan turistički vodič.",
-     "tours.t2.dur": "8 sati",
-     "tours.t2.grp": "Max 6 osoba",
-     "tours.t2.lng": "EN · FR",
-     "tours.t2.title": "Otoci Zadarskog arhipelaga",
-     "tours.t2.desc": "Cjelodnevna privatna brodska tura do skrivenih plaža Dugog otoka, kristalnih uvala i autentičnih ribarskih mjesta.",
-     "tours.t3.dur": "4 sata",
-     "tours.t3.grp": "Max 10 osoba",
-     "tours.t3.lng": "EN · FR · HR",
-     "tours.t3.title": "Okusi Dalmacije – Hrana & Vino",
-     "tours.t3.desc": "Maslinova ulja, paški sir, morski plodovi i lokalna vina — gastro tura kroz tržnicu, konobe i obiteljske vinarije.",
-     "tours.perperson": "/ osobi",
-     "tours.bookbtn": "Rezerviraj",
-     "gallery.label": "Vizualni dnevnik",
-     "booking.label": "Rezervacija",
-     "booking.desc": "Odaberite turu i termin putem kalendara. Potvrda stiže automatski na e-mail. Otkaz besplatan do 48 sati unaprijed.",
-     "booking.phone.label": "Pon–Ned, 08:00–20:00",
-     "booking.email.label": "Odgovaram unutar 2 sata",
-     "booking.location": "Zadar, Hrvatska",
-     "booking.meeting": "Dogovorit ćemo mjesto susreta",
-+    "booking.cal.title": "Kalendar dostupnih termina",
-+    "booking.cal.badge": "Brza potvrda",
-+    "booking.cal.note": "Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.",
-     "reviews.label": "Što kažu gosti",
-     "reviews.r1.text": "\"Zdenka je bila nevjerojatna! Pokazala nam je mjesta koja bismo sami nikad pronašli. Tura o rimskom forumu bila je posebno fascinantna.\"",
-     "reviews.r2.text": "\"La gita in barca alle isole è stata la migliore esperienza del nostro viaggio. Zdenka conosce ogni angolo della costa e parla un ottimo francese.\"",
-     "reviews.r3.text": "\"The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!\"",
-     "footer.tagline": "Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2013. godine.",
-     "footer.col1.title": "Ture",
-     "footer.col1.custom": "Privatne ture po mjeri",
-     "footer.col2.title": "Kontakt",
-     "footer.col2.ig": "Instagram",
-     "footer.col2.ta": "TripAdvisor profil",
-     "footer.rights": "Sva prava pridržana",
-   },
-   en: {
-     "nav.about": "About",
-     "nav.tours": "Tours",
-     "nav.gallery": "Gallery",
-     "nav.book": "Book Now",
-     "nav.reviews": "Reviews",
-     "hero.eyebrow": "Private Tour Guide · Zadar, Croatia",
-     "hero.subtitle": "Authentic experiences with a licensed guide who truly loves her city",
-     "hero.cta1": "Book a Tour",
-     "hero.cta2": "View Tours",
-     "hero.scroll": "Scroll",
-     "about.label": "Your guide",
-     "about.badge": "years experience",
+    "tours.tag.food": "Gastronomija",
+    "tours.t1.dur": "2,5 sata",
+    "tours.t1.grp": "Max 8 osoba",
+    "tours.t1.lng": "EN · FR · HR",
+    "tours.t1.title": "Zadar Stari Grad – Historijska Šetnja",
+    "tours.t1.desc": "Provedite se kroz rimski forum, crkvu sv. Donata, Morske orgulje i Pozdrav suncu. Priče koje ne piše ni jedan turistički vodič.",
+    "tours.t2.dur": "8 sati",
+    "tours.t2.grp": "Max 6 osoba",
+    "tours.t2.lng": "EN · FR",
+    "tours.t2.title": "Otoci Zadarskog arhipelaga",
+    "tours.t2.desc": "Cjelodnevna privatna brodska tura do skrivenih plaža Dugog otoka, kristalnih uvala i autentičnih ribarskih mjesta.",
+    "tours.t3.dur": "4 sata",
+    "tours.t3.grp": "Max 10 osoba",
+    "tours.t3.lng": "EN · FR · HR",
+    "tours.t3.title": "Okusi Dalmacije – Hrana & Vino",
+    "tours.t3.desc": "Maslinova ulja, paški sir, morski plodovi i lokalna vina — gastro tura kroz tržnicu, konobe i obiteljske vinarije.",
+    "tours.perperson": "/ osobi",
+    "tours.bookbtn": "Rezerviraj",
+    "gallery.label": "Vizualni dnevnik",
+    "booking.label": "Rezervacija",
+    "booking.desc": "Odaberite turu i termin putem kalendara. Potvrda stiže automatski na e-mail. Otkaz besplatan do 48 sati unaprijed.",
+    "booking.phone.label": "Pon–Ned, 08:00–20:00",
+    "booking.email.label": "Odgovaram unutar 2 sata",
+    "booking.location": "Zadar, Hrvatska",
+    "booking.meeting": "Dogovorit ćemo mjesto susreta",
+    "booking.cal.title": "Kalendar dostupnih termina",
+    "booking.cal.badge": "Brza potvrda",
+    "booking.cal.note": "Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.",
+    "reviews.label": "Što kažu gosti",
+    "reviews.r1.text": "\"Zdenka je bila nevjerojatna! Pokazala nam je mjesta koja bismo sami nikad pronašli. Tura o rimskom forumu bila je posebno fascinantna.\"",
+    "reviews.r2.text": "\"La gita in barca alle isole è stata la migliore esperienza del nostro viaggio. Zdenka conosce ogni angolo della costa e parla un ottimo francese.\"",
+    "reviews.r3.text": "\"The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!\"",
+    "footer.tagline": "Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2013. godine.",
+    "footer.col1.title": "Ture",
+    "footer.col1.custom": "Privatne ture po mjeri",
+    "footer.col2.title": "Kontakt",
+    "footer.col2.ig": "Instagram",
+    "footer.col2.ta": "TripAdvisor profil",
+    "footer.rights": "Sva prava pridržana",
+  },
+  en: {
+    "nav.about": "About",
+    "nav.tours": "Tours",
+    "nav.gallery": "Gallery",
+    "nav.book": "Book Now",
+    "nav.reviews": "Reviews",
+    "hero.eyebrow": "Private Tour Guide · Zadar, Croatia",
+    "hero.subtitle": "Authentic experiences with a licensed guide who truly loves her city",
+    "hero.cta1": "Book a Tour",
+    "hero.cta2": "View Tours",
+    "hero.scroll": "Scroll",
+    "about.label": "Your guide",
+    "about.badge": "years experience",
 @@ -895,50 +944,53 @@ const TRANSLATIONS = {
-     "tours.tag.food": "Gastronomy",
-     "tours.t1.dur": "2.5 hours",
-     "tours.t1.grp": "Max 8 people",
-     "tours.t1.lng": "EN · FR · HR",
-     "tours.t1.title": "Zadar Old Town – Historical Walk",
-     "tours.t1.desc": "Explore the Roman Forum, St. Donatus Church, the Sea Organ and Sun Salutation. Stories you won't find in any guidebook.",
-     "tours.t2.dur": "8 hours",
-     "tours.t2.grp": "Max 6 people",
-     "tours.t2.lng": "EN · FR",
-     "tours.t2.title": "Zadar Archipelago Island Tour",
-     "tours.t2.desc": "A full-day private boat trip to the hidden beaches of Dugi Otok, crystal-clear coves and authentic fishing villages.",
-     "tours.t3.dur": "4 hours",
-     "tours.t3.grp": "Max 10 people",
-     "tours.t3.lng": "EN · FR · HR",
-     "tours.t3.title": "Taste of Dalmatia – Food & Wine",
-     "tours.t3.desc": "Olive oils, Pag cheese, seafood and local wines — a gastronomic journey through the market, traditional konobas and family wineries.",
-     "tours.perperson": "/ person",
-     "tours.bookbtn": "Book Now",
-     "gallery.label": "Visual diary",
-     "booking.label": "Reservation",
-     "booking.desc": "Choose your tour and date via the calendar below. Confirmation arrives automatically by email. Free cancellation up to 48 hours in advance.",
-     "booking.phone.label": "Mon–Sun, 08:00–20:00",
-     "booking.email.label": "I reply within 2 hours",
-     "booking.location": "Zadar, Croatia",
-     "booking.meeting": "We'll arrange the meeting point",
-+    "booking.cal.title": "Availability calendar",
-+    "booking.cal.badge": "Fast confirmation",
-+    "booking.cal.note": "Choose your date and time, and I’ll confirm your reservation right away.",
-     "reviews.label": "Guest reviews",
-     "reviews.r1.text": "\"Zdenka was incredible! She showed us places we would never have found on our own. The Roman Forum tour was especially fascinating.\"",
-     "reviews.r2.text": "\"The boat trip to the islands was the best experience of our journey. Zdenka speaks excellent French and knows every corner of the coast.\"",
-     "reviews.r3.text": "\"The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!\"",
-     "footer.tagline": "Licensed tourist guide for Zadar County. Creator of unforgettable experiences since 2013.",
-     "footer.col1.title": "Tours",
-     "footer.col1.custom": "Custom private tours",
-     "footer.col2.title": "Contact",
-     "footer.col2.ig": "Instagram",
-     "footer.col2.ta": "TripAdvisor profile",
-     "footer.rights": "All rights reserved",
-   },
-   fr: {
-     "nav.about": "À Propos",
-     "nav.tours": "Visites",
-     "nav.gallery": "Galerie",
-     "nav.book": "Réserver",
-     "nav.reviews": "Avis",
-     "hero.eyebrow": "Guide Touristique Privée · Zadar, Croatie",
-     "hero.subtitle": "Des expériences authentiques avec une guide qui aime vraiment sa ville",
-     "hero.cta1": "Réserver une Visite",
-     "hero.cta2": "Voir les Visites",
-     "hero.scroll": "Défiler",
-     "about.label": "Votre guide",
-     "about.badge": "ans d'expérience",
+    "tours.tag.food": "Gastronomy",
+    "tours.t1.dur": "2.5 hours",
+    "tours.t1.grp": "Max 8 people",
+    "tours.t1.lng": "EN · FR · HR",
+    "tours.t1.title": "Zadar Old Town – Historical Walk",
+    "tours.t1.desc": "Explore the Roman Forum, St. Donatus Church, the Sea Organ and Sun Salutation. Stories you won't find in any guidebook.",
+    "tours.t2.dur": "8 hours",
+    "tours.t2.grp": "Max 6 people",
+    "tours.t2.lng": "EN · FR",
+    "tours.t2.title": "Zadar Archipelago Island Tour",
+    "tours.t2.desc": "A full-day private boat trip to the hidden beaches of Dugi Otok, crystal-clear coves and authentic fishing villages.",
+    "tours.t3.dur": "4 hours",
+    "tours.t3.grp": "Max 10 people",
+    "tours.t3.lng": "EN · FR · HR",
+    "tours.t3.title": "Taste of Dalmatia – Food & Wine",
+    "tours.t3.desc": "Olive oils, Pag cheese, seafood and local wines — a gastronomic journey through the market, traditional konobas and family wineries.",
+    "tours.perperson": "/ person",
+    "tours.bookbtn": "Book Now",
+    "gallery.label": "Visual diary",
+    "booking.label": "Reservation",
+    "booking.desc": "Choose your tour and date via the calendar below. Confirmation arrives automatically by email. Free cancellation up to 48 hours in advance.",
+    "booking.phone.label": "Mon–Sun, 08:00–20:00",
+    "booking.email.label": "I reply within 2 hours",
+    "booking.location": "Zadar, Croatia",
+    "booking.meeting": "We'll arrange the meeting point",
+    "booking.cal.title": "Availability calendar",
+    "booking.cal.badge": "Fast confirmation",
+    "booking.cal.note": "Choose your date and time, and I’ll confirm your reservation right away.",
+    "reviews.label": "Guest reviews",
+    "reviews.r1.text": "\"Zdenka was incredible! She showed us places we would never have found on our own. The Roman Forum tour was especially fascinating.\"",
+    "reviews.r2.text": "\"The boat trip to the islands was the best experience of our journey. Zdenka speaks excellent French and knows every corner of the coast.\"",
+    "reviews.r3.text": "\"The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!\"",
+    "footer.tagline": "Licensed tourist guide for Zadar County. Creator of unforgettable experiences since 2013.",
+    "footer.col1.title": "Tours",
+    "footer.col1.custom": "Custom private tours",
+    "footer.col2.title": "Contact",
+    "footer.col2.ig": "Instagram",
+    "footer.col2.ta": "TripAdvisor profile",
+    "footer.rights": "All rights reserved",
+  },
+  fr: {
+    "nav.about": "À Propos",
+    "nav.tours": "Visites",
+    "nav.gallery": "Galerie",
+    "nav.book": "Réserver",
+    "nav.reviews": "Avis",
+    "hero.eyebrow": "Guide Touristique Privée · Zadar, Croatie",
+    "hero.subtitle": "Des expériences authentiques avec une guide qui aime vraiment sa ville",
+    "hero.cta1": "Réserver une Visite",
+    "hero.cta2": "Voir les Visites",
+    "hero.scroll": "Défiler",
+    "about.label": "Votre guide",
+    "about.badge": "ans d'expérience",
 @@ -953,80 +1005,87 @@ const TRANSLATIONS = {
-     "tours.tag.food": "Gastronomie",
-     "tours.t1.dur": "2h30",
-     "tours.t1.grp": "Max 8 personnes",
-     "tours.t1.lng": "FR · EN · HR",
-     "tours.t1.title": "Zadar Vieille Ville – Promenade Historique",
-     "tours.t1.desc": "Explorez le Forum Romain, l'église Saint-Donat, l'Orgue de Mer et le Salut au Soleil. Des histoires introuvables dans aucun guide touristique.",
-     "tours.t2.dur": "8 heures",
-     "tours.t2.grp": "Max 6 personnes",
-     "tours.t2.lng": "FR · EN",
-     "tours.t2.title": "Archipel de Zadar – Tour des Îles",
-     "tours.t2.desc": "Une excursion privée en bateau d'une journée vers les plages cachées de Dugi Otok, les criques cristallines et les villages de pêcheurs authentiques.",
-     "tours.t3.dur": "4 heures",
-     "tours.t3.grp": "Max 10 personnes",
-     "tours.t3.lng": "FR · EN · HR",
-     "tours.t3.title": "Saveurs de Dalmatie – Gastronomie & Vins",
-     "tours.t3.desc": "Huiles d'olive, fromage de Pag, fruits de mer et vins locaux — un voyage gastronomique à travers le marché, les konobas traditionnelles et les caves familiales.",
-     "tours.perperson": "/ personne",
-     "tours.bookbtn": "Réserver",
-     "gallery.label": "Journal visuel",
-     "booking.label": "Réservation",
-     "booking.desc": "Choisissez votre visite et votre date via le calendrier. La confirmation est envoyée automatiquement par e-mail. Annulation gratuite jusqu'à 48 heures à l'avance.",
-     "booking.phone.label": "Lun–Dim, 08h00–20h00",
-     "booking.email.label": "Je réponds dans les 2 heures",
-     "booking.location": "Zadar, Croatie",
-     "booking.meeting": "Nous conviendrons du point de rendez-vous",
-+    "booking.cal.title": "Calendrier des disponibilités",
-+    "booking.cal.badge": "Confirmation rapide",
-+    "booking.cal.note": "Choisissez la date et l’heure, et je confirme votre réservation immédiatement.",
-     "reviews.label": "Avis des visiteurs",
-     "reviews.r1.text": "\"Zdenka était incroyable ! Elle nous a montré des endroits que nous n'aurions jamais trouvés seuls. La visite du Forum Romain était particulièrement fascinante.\"",
-     "reviews.r2.text": "\"La croisière en bateau vers les îles a été la meilleure expérience de notre voyage. Zdenka parle un excellent français et connaît chaque recoin de la côte.\"",
-     "reviews.r3.text": "\"La visite gastronomique était absolument extraordinaire. Vin local, huîtres fraîches, fromage de Pag — Zdenka connaît chaque producteur personnellement. Je recommande vivement !\"",
-     "footer.tagline": "Guide touristique agréée du comté de Zadar. Créatrice d'expériences inoubliables depuis 2013.",
-     "footer.col1.title": "Visites",
-     "footer.col1.custom": "Visites privées sur mesure",
-     "footer.col2.title": "Contact",
-     "footer.col2.ig": "Instagram",
-     "footer.col2.ta": "Profil TripAdvisor",
-     "footer.rights": "Tous droits réservés",
-   }
- };
- 
- let currentLang = 'hr';
- 
- function setLang(lang) {
-   currentLang = lang;
-+  localStorage.setItem('preferredLang', lang);
-   document.querySelectorAll('.lang-btn').forEach(b => {
-     b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
-   });
-   document.querySelectorAll('[data-i18n]').forEach(el => {
-     const key = el.getAttribute('data-i18n');
-     if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
-       el.textContent = TRANSLATIONS[lang][key];
-     }
-   });
-   document.documentElement.lang = lang;
- }
- 
- // ─── SCROLL NAV ────────────────────────────────────────────────────────────────
- window.addEventListener('scroll', () => {
-   document.getElementById('main-nav')
-     .classList.toggle('scrolled', window.scrollY > 60);
- });
- 
- // ─── MODAL ─────────────────────────────────────────────────────────────────────
- 
- // ─── HERO TITLE LANGUAGE ──────────────────────────────────────────────────────
- const heroTitles = {
-   hr: ['Otkrijte', 'pravi Zadar'],
-   en: ['Discover', 'true Zadar'],
-   fr: ['Découvrez', 'le vrai Zadar'],
- };
- 
- const origSetLang = setLang;
- window.setLang = function(lang) {
-   origSetLang(lang);
-   const [line1, line2] = heroTitles[lang];
-   document.querySelector('.hero-title').innerHTML =
-     `${line1}<br><em>${line2}</em>`;
- };
-+
-+const savedLang = localStorage.getItem('preferredLang') || 'hr';
-+window.setLang(savedLang);
- </script>
- </body>
- </html>
- 
-EOF
-)
+    "tours.tag.food": "Gastronomie",
+    "tours.t1.dur": "2h30",
+    "tours.t1.grp": "Max 8 personnes",
+    "tours.t1.lng": "FR · EN · HR",
+    "tours.t1.title": "Zadar Vieille Ville – Promenade Historique",
+    "tours.t1.desc": "Explorez le Forum Romain, l'église Saint-Donat, l'Orgue de Mer et le Salut au Soleil. Des histoires introuvables dans aucun guide touristique.",
+    "tours.t2.dur": "8 heures",
+    "tours.t2.grp": "Max 6 personnes",
+    "tours.t2.lng": "FR · EN",
+    "tours.t2.title": "Archipel de Zadar – Tour des Îles",
+    "tours.t2.desc": "Une excursion privée en bateau d'une journée vers les plages cachées de Dugi Otok, les criques cristallines et les villages de pêcheurs authentiques.",
+    "tours.t3.dur": "4 heures",
+    "tours.t3.grp": "Max 10 personnes",
+    "tours.t3.lng": "FR · EN · HR",
+    "tours.t3.title": "Saveurs de Dalmatie – Gastronomie & Vins",
+    "tours.t3.desc": "Huiles d'olive, fromage de Pag, fruits de mer et vins locaux — un voyage gastronomique à travers le marché, les konobas traditionnelles et les caves familiales.",
+    "tours.perperson": "/ personne",
+    "tours.bookbtn": "Réserver",
+    "gallery.label": "Journal visuel",
+    "booking.label": "Réservation",
+    "booking.desc": "Choisissez votre visite et votre date via le calendrier. La confirmation est envoyée automatiquement par e-mail. Annulation gratuite jusqu'à 48 heures à l'avance.",
+    "booking.phone.label": "Lun–Dim, 08h00–20h00",
+    "booking.email.label": "Je réponds dans les 2 heures",
+    "booking.location": "Zadar, Croatie",
+    "booking.meeting": "Nous conviendrons du point de rendez-vous",
+    "booking.cal.title": "Calendrier des disponibilités",
+    "booking.cal.badge": "Confirmation rapide",
+    "booking.cal.note": "Choisissez la date et l’heure, et je confirme votre réservation immédiatement.",
+    "reviews.label": "Avis des visiteurs",
+    "reviews.r1.text": "\"Zdenka était incroyable ! Elle nous a montré des endroits que nous n'aurions jamais trouvés seuls. La visite du Forum Romain était particulièrement fascinante.\"",
+    "reviews.r2.text": "\"La croisière en bateau vers les îles a été la meilleure expérience de notre voyage. Zdenka parle un excellent français et connaît chaque recoin de la côte.\"",
+    "reviews.r3.text": "\"La visite gastronomique était absolument extraordinaire. Vin local, huîtres fraîches, fromage de Pag — Zdenka connaît chaque producteur personnellement. Je recommande vivement !\"",
+    "footer.tagline": "Guide touristique agréée du comté de Zadar. Créatrice d'expériences inoubliables depuis 2013.",
+    "footer.col1.title": "Visites",
+    "footer.col1.custom": "Visites privées sur mesure",
+    "footer.col2.title": "Contact",
+    "footer.col2.ig": "Instagram",
+    "footer.col2.ta": "Profil TripAdvisor",
+    "footer.rights": "Tous droits réservés",
+  }
+};
+
+let currentLang = 'hr';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('preferredLang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+      el.textContent = TRANSLATIONS[lang][key];
+    }
+  });
+  document.documentElement.lang = lang;
+}
+
+// ─── SCROLL NAV ────────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav')
+    .classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── MODAL ─────────────────────────────────────────────────────────────────────
+
+// ─── HERO TITLE LANGUAGE ──────────────────────────────────────────────────────
+const heroTitles = {
+  hr: ['Otkrijte', 'pravi Zadar'],
+  en: ['Discover', 'true Zadar'],
+  fr: ['Découvrez', 'le vrai Zadar'],
+};
+
+const origSetLang = setLang;
+window.setLang = function(lang) {
+  origSetLang(lang);
+  const [line1, line2] = heroTitles[lang];
+  document.querySelector('.hero-title').innerHTML =
+    `${line1}<br><em>${line2}</em>`;
+};
+
+const savedLang = localStorage.getItem('preferredLang') || 'hr';
+window.setLang(savedLang);
+</script>
+</body>
+</html>
