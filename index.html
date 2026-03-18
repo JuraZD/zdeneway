@@ -119,7 +119,7 @@
     .hero-title {
       font-family: var(--font-display);
       font-size: clamp(3.5rem, 9vw, 7.5rem);
-      font-weight: 300; line-height: 1.0;
+      font-weight: 400; line-height: 1.0;
       color: var(--bijela); margin-bottom: .5rem;
     }
     .hero-title em {
@@ -181,7 +181,7 @@
     .section-title {
       font-family: var(--font-display);
       font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 400; line-height: 1.1;
+      font-weight: 600; line-height: 1.1;
       color: var(--crna);
     }
     .section-title em { font-style: italic; color: var(--crvena); }
@@ -352,7 +352,7 @@
       background: linear-gradient(135deg, var(--bez) 0%, var(--bez) 100%);
     }
     .booking-wrap {
-      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
       align-items: start;
     }
     .booking-info .section-title { margin-bottom: 1rem; }
@@ -398,8 +398,14 @@
     .cal-hint {
       font: 400 0.9rem/1.5 var(--font-body);
       color: var(--text-mid);
-      margin: 0;
+      margin: 0 0 .5rem;
     }
+    .cal-times {
+      font: 400 0.82rem/1 var(--font-body);
+      color: var(--text-lt);
+      margin-top: .5rem;
+    }
+    .cal-times strong { color: var(--text-dark); font-weight: 600; }
 
     /* ─── REVIEWS ─── */
     #reviews { background: var(--bez); }
@@ -590,11 +596,11 @@
       </div>
       <div class="tour-body">
         <div class="tour-meta">
-          <span class="dur" data-i18n="tours.t1.dur">2,5 sata</span>
+          <span class="dur" data-i18n="tours.t1.dur">1 sat 30 min</span>
           <span class="grp" data-i18n="tours.t1.grp">Max 8 osoba</span>
           <span class="lng" data-i18n="tours.t1.lng">EN · FR · HR</span>
         </div>
-        <h3 class="tour-title" data-i18n="tours.t1.title">Zadar Stari Grad – Historijska Šetnja</h3>
+        <h3 class="tour-title" data-i18n="tours.t1.title">Zadar Stari Grad – Povijesna Šetnja</h3>
         <p class="tour-desc" data-i18n="tours.t1.desc">
           Provedite se kroz rimski forum, crkvu sv. Donata, Morske orgulje i Pozdrav suncu. Priče koje ne piše ni jedan turistički vodič.
         </p>
@@ -724,6 +730,7 @@
       <div class="cal-header">
         <span class="cal-label">Rezervacija</span>
         <p class="cal-hint">Odaberite datum i termin — potvrda stiže automatski na e-mail.</p>
+        <p class="cal-times">Dostupni termini: <strong>10:00</strong> · <strong>12:00</strong> · <strong>18:00</strong></p>
       </div>
       <div id="my-cal-inline"></div>
       <script type="text/javascript">
@@ -857,10 +864,10 @@ const TRANSLATIONS = {
     "tours.tag.popular": "Najpopularnije",
     "tours.tag.new": "Novo",
     "tours.tag.food": "Gastronomija",
-    "tours.t1.dur": "2,5 sata",
+    "tours.t1.dur": "1 sat 30 min",
     "tours.t1.grp": "Max 8 osoba",
     "tours.t1.lng": "EN · FR · HR",
-    "tours.t1.title": "Zadar Stari Grad – Historijska Šetnja",
+    "tours.t1.title": "Zadar Stari Grad – Povijesna Šetnja",
     "tours.t1.desc": "Provedite se kroz rimski forum, crkvu sv. Donata, Morske orgulje i Pozdrav suncu. Priče koje ne piše ni jedan turistički vodič.",
     "tours.t2.dur": "8 sati",
     "tours.t2.grp": "Max 6 osoba",
@@ -885,7 +892,7 @@ const TRANSLATIONS = {
     "reviews.r1.text": "\"Zdenka je bila nevjerojatna! Pokazala nam je mjesta koja bismo sami nikad pronašli. Tura o rimskom forumu bila je posebno fascinantna.\"",
     "reviews.r2.text": "\"La gita in barca alle isole è stata la migliore esperienza del nostro viaggio. Zdenka conosce ogni angolo della costa e parla un ottimo francese.\"",
     "reviews.r3.text": "\"The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!\"",
-    "footer.tagline": "Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2013. godine.",
+    "footer.tagline": "Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2023. godine.",
     "footer.col1.title": "Ture",
     "footer.col1.custom": "Privatne ture po mjeri",
     "footer.col2.title": "Kontakt",
@@ -915,7 +922,7 @@ const TRANSLATIONS = {
     "tours.tag.popular": "Most popular",
     "tours.tag.new": "New",
     "tours.tag.food": "Gastronomy",
-    "tours.t1.dur": "2.5 hours",
+    "tours.t1.dur": "1h 30min",
     "tours.t1.grp": "Max 8 people",
     "tours.t1.lng": "EN · FR · HR",
     "tours.t1.title": "Zadar Old Town – Historical Walk",
@@ -943,7 +950,7 @@ const TRANSLATIONS = {
     "reviews.r1.text": "\"Zdenka was incredible! She showed us places we would never have found on our own. The Roman Forum tour was especially fascinating.\"",
     "reviews.r2.text": "\"The boat trip to the islands was the best experience of our journey. Zdenka speaks excellent French and knows every corner of the coast.\"",
     "reviews.r3.text": "\"The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!\"",
-    "footer.tagline": "Licensed tourist guide for Zadar County. Creator of unforgettable experiences since 2013.",
+    "footer.tagline": "Licensed tourist guide for Zadar County. Creator of unforgettable experiences since 2023.",
     "footer.col1.title": "Tours",
     "footer.col1.custom": "Custom private tours",
     "footer.col2.title": "Contact",
@@ -973,7 +980,7 @@ const TRANSLATIONS = {
     "tours.tag.popular": "Le plus populaire",
     "tours.tag.new": "Nouveau",
     "tours.tag.food": "Gastronomie",
-    "tours.t1.dur": "2h30",
+    "tours.t1.dur": "1h30",
     "tours.t1.grp": "Max 8 personnes",
     "tours.t1.lng": "FR · EN · HR",
     "tours.t1.title": "Zadar Vieille Ville – Promenade Historique",
@@ -1001,7 +1008,7 @@ const TRANSLATIONS = {
     "reviews.r1.text": "\"Zdenka était incroyable ! Elle nous a montré des endroits que nous n'aurions jamais trouvés seuls. La visite du Forum Romain était particulièrement fascinante.\"",
     "reviews.r2.text": "\"La croisière en bateau vers les îles a été la meilleure expérience de notre voyage. Zdenka parle un excellent français et connaît chaque recoin de la côte.\"",
     "reviews.r3.text": "\"La visite gastronomique était absolument extraordinaire. Vin local, huîtres fraîches, fromage de Pag — Zdenka connaît chaque producteur personnellement. Je recommande vivement !\"",
-    "footer.tagline": "Guide touristique agréée du comté de Zadar. Créatrice d'expériences inoubliables depuis 2013.",
+    "footer.tagline": "Guide touristique agréée du comté de Zadar. Créatrice d'expériences inoubliables depuis 2023.",
     "footer.col1.title": "Visites",
     "footer.col1.custom": "Visites privées sur mesure",
     "footer.col2.title": "Contact",

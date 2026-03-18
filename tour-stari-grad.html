@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Zadar Stari Grad – Historijska Šetnja · Zdenka Rinčić</title>
+<title>Zadar Stari Grad – Povijesna Šetnja · Zdenka Rinčić</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
@@ -80,7 +80,7 @@
   /* COMMON */
   .section-wrap { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
   .section-label { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--crvena); margin-bottom: .8rem; }
-  .section-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 1rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
   .section-title em { color: var(--crvena); font-style: italic; }
   .section-divider { width: 60px; height: 2px; background: var(--zlatna); margin-bottom: 2.5rem; }
 
@@ -118,7 +118,7 @@
 
   /* BOOKING */
   .booking-section { background: var(--bez); }
-  .booking-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .booking-info p { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; }
   .contact-items { display: flex; flex-direction: column; gap: 1rem; }
   .contact-item { display: flex; align-items: center; gap: 1rem; font-size: .9rem; color: var(--text-mid); }
@@ -131,7 +131,9 @@
   #my-cal-inline { width: 100%; min-height: 600px; }
   .cal-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.08); background: var(--bez); }
   .cal-label { display: inline-block; font: 600 0.7rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--crvena); margin-bottom: .5rem; }
-  .cal-hint { font: 400 0.9rem/1.5 var(--font-body); color: var(--text-mid); margin: 0; }
+  .cal-hint { font: 400 0.9rem/1.5 var(--font-body); color: var(--text-mid); margin: 0 0 .5rem; }
+  .cal-times { font: 400 0.82rem/1 var(--font-body); color: var(--text-lt); margin-top: .5rem; }
+  .cal-times strong { color: var(--text-dark); font-weight: 600; }
 
   /* BTN */
   .btn-primary {
@@ -185,9 +187,9 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <p class="hero-eyebrow" data-i18n="hero.eyebrow">Pješačka tura · Zadar Stari Grad</p>
-    <h1 class="hero-title" data-i18n-html="hero.title">Historijska <em>Šetnja</em></h1>
+    <h1 class="hero-title" data-i18n-html="hero.title">Povijesna <em>Šetnja</em></h1>
     <div class="hero-meta">
-      <div class="hero-meta-item"><strong>2,5 h</strong> · <span data-i18n="meta.dur">Trajanje</span></div>
+      <div class="hero-meta-item"><strong>1h 30min</strong> · <span data-i18n="meta.dur">Trajanje</span></div>
       <div class="hero-meta-item"><strong>Max 8</strong> · <span data-i18n="meta.grp">Osoba</span></div>
       <div class="hero-meta-item"><strong>EN · FR · HR</strong> · <span data-i18n="meta.lng">Jezici</span></div>
       <div class="hero-meta-item"><strong>€45</strong> · <span data-i18n="meta.price">Po osobi</span></div>
@@ -203,7 +205,7 @@
 
   <div class="overview-grid">
     <div class="overview-card"><div class="lbl" data-i18n="card.price">Cijena</div><div class="val"><sup>€</sup>45 <small style="font-size:.75rem;color:var(--text-lt)">/ <span data-i18n="card.per">osobi</span></small></div></div>
-    <div class="overview-card"><div class="lbl" data-i18n="card.dur">Trajanje</div><div class="val" data-i18n="card.dur.val">2,5 sata</div></div>
+    <div class="overview-card"><div class="lbl" data-i18n="card.dur">Trajanje</div><div class="val" data-i18n="card.dur.val">1 sat 30 min</div></div>
     <div class="overview-card"><div class="lbl" data-i18n="card.grp">Veličina grupe</div><div class="val" data-i18n="card.grp.val">Max 8 osoba</div></div>
     <div class="overview-card"><div class="lbl" data-i18n="card.lng">Jezici</div><div class="val">EN · FR · HR</div></div>
   </div>
@@ -313,6 +315,7 @@
         <div class="cal-header">
           <span class="cal-label">Rezervacija</span>
           <p class="cal-hint">Odaberite datum i termin — potvrda stiže automatski na e-mail.</p>
+          <p class="cal-times">Dostupni termini: <strong>10:00</strong> · <strong>12:00</strong> · <strong>18:00</strong></p>
         </div>
         <div id="my-cal-inline"></div>
         <script type="text/javascript">
@@ -337,12 +340,12 @@ const TRANSLATIONS = {
     "nav.about": "O Meni", "nav.tours": "Ture", "nav.gallery": "Galerija",
     "nav.book": "Rezervacija", "nav.reviews": "Recenzije",
     "hero.eyebrow": "Pješačka tura · Zadar Stari Grad",
-    "hero.title": "Historijska <em>Šetnja</em>",
+    "hero.title": "Povijesna <em>Šetnja</em>",
     "meta.dur": "Trajanje", "meta.grp": "Osoba", "meta.lng": "Jezici", "meta.price": "Po osobi",
     "overview.label": "Pregled ture",
     "overview.title": "Rimski forum, crkva sv. Donata<br><em>i zvuci mora</em>",
     "card.price": "Cijena", "card.per": "osobi", "card.dur": "Trajanje",
-    "card.dur.val": "2,5 sata", "card.grp": "Veličina grupe", "card.grp.val": "Max 8 osoba", "card.lng": "Jezici",
+    "card.dur.val": "1 sat 30 min", "card.grp": "Veličina grupe", "card.grp.val": "Max 8 osoba", "card.lng": "Jezici",
     "desc.p1": "Zadar ima 3.000 godina povijesti unutar zidina koje i danas stoje. Ova šetnja nije turistički obilazak — to je priča o gradu ispričana od nekoga tko je na tim ulicama odrasla.",
     "desc.p2": "Prošetajmo rimskim forumom koji datira iz 1. stoljeća pr.Kr., uđimo u crkvu sv. Donata — jedinstven primjer predromaničke arhitekture — pa do Morskih orgulja čiji zvuk ovisi o valovima i vjetru.",
     "desc.p3": "Svaka tura završava na Pozdravu suncu u pravo vrijeme za zalaz — jedno od 10 najposebnijih zalaza sunca u svijetu prema Alfredu Hitchcocku.",
@@ -375,7 +378,7 @@ const TRANSLATIONS = {
     "overview.label": "Tour Overview",
     "overview.title": "Roman Forum, St. Donatus Church<br><em>and the sounds of the sea</em>",
     "card.price": "Price", "card.per": "person", "card.dur": "Duration",
-    "card.dur.val": "2.5 hours", "card.grp": "Group size", "card.grp.val": "Max 8 people", "card.lng": "Languages",
+    "card.dur.val": "1h 30min", "card.grp": "Group size", "card.grp.val": "Max 8 people", "card.lng": "Languages",
     "desc.p1": "Zadar holds 3,000 years of history within walls that still stand today. This walk is not a tourist circuit — it is a story about the city, told by someone who grew up on these very streets.",
     "desc.p2": "We will explore the Roman Forum dating from the 1st century BC, step inside St. Donatus Church — a unique example of pre-Romanesque architecture — then follow the ancient walls to the Sea Organ, whose sound depends on wind and waves.",
     "desc.p3": "Every tour ends at the Sun Salutation at sunset — one of the 10 most beautiful sunsets in the world, as noted by Alfred Hitchcock himself.",
@@ -408,7 +411,7 @@ const TRANSLATIONS = {
     "overview.label": "Aperçu de la visite",
     "overview.title": "Forum Romain, Église Saint-Donat<br><em>et les sons de la mer</em>",
     "card.price": "Prix", "card.per": "personne", "card.dur": "Durée",
-    "card.dur.val": "2,5 heures", "card.grp": "Taille du groupe", "card.grp.val": "Max 8 personnes", "card.lng": "Langues",
+    "card.dur.val": "1h30", "card.grp": "Taille du groupe", "card.grp.val": "Max 8 personnes", "card.lng": "Langues",
     "desc.p1": "Zadar renferme 3 000 ans d'histoire dans des remparts qui se dressent encore aujourd'hui. Cette promenade n'est pas un circuit touristique — c'est l'histoire d'une ville racontée par quelqu'un qui y a grandi.",
     "desc.p2": "Nous explorerons le Forum Romain datant du 1er siècle av. J.-C., entrerons dans l'Église Saint-Donat — exemple unique d'architecture préromane — puis longerons les remparts jusqu'aux Orgues de Mer, dont la musique dépend du vent et des vagues.",
     "desc.p3": "Chaque visite se termine au Salut au Soleil au coucher — l'un des 10 plus beaux couchers du monde, selon Alfred Hitchcock lui-même.",
