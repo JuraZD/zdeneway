@@ -352,8 +352,7 @@
       background: linear-gradient(135deg, var(--bez) 0%, var(--bez) 100%);
     }
     .booking-wrap {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: start;
+      max-width: 600px;
     }
     .booking-info .section-title { margin-bottom: 1rem; }
     .booking-info p {
@@ -373,18 +372,6 @@
       flex-shrink: 0;
     }
 
-    .cal-embed-wrap {
-      border: 2px solid var(--crvena);
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(192,57,43,0.12);
-      background: var(--bijela);
-      align-self: stretch;
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-    }
-    #my-cal-inline { width: 100%; flex: 1; min-height: 0; overflow: hidden; }
 
     /* ─── REVIEWS ─── */
     #reviews { background: var(--bez); }
@@ -470,7 +457,7 @@
       }
       .gallery-item:nth-child(1),
       .gallery-item:nth-child(4) { grid-column: auto; grid-row: auto; }
-      .booking-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .booking-wrap { }
       .reviews-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
@@ -703,25 +690,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="cal-embed-wrap">
-      <div id="my-cal-inline"></div>
-      <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", {origin:"https://cal.com"});
-        Cal("inline", {
-          elementOrSelector: "#my-cal-inline",
-          calLink: "jurica-devic-d08io2/zadar-tour",
-          layout: "month_view"
-        });
-        Cal("ui", {
-          theme: "light",
-          styles: { branding: { brandColor: "#C0392B" } },
-          hideEventTypeDetails: false,
-          layout: "month_view"
-        });
-      </script>
     </div>
 
   </div>

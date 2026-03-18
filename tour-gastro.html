@@ -102,7 +102,7 @@
   .gallery-item:hover img { transform: scale(1.05); }
 
   .booking-section { background: var(--bez); }
-  .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .booking-grid { max-width: 600px; }
   .booking-info p { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; }
   .contact-items { display: flex; flex-direction: column; gap: 1rem; }
   .contact-item { display: flex; align-items: center; gap: 1rem; font-size: .9rem; color: var(--text-mid); }
@@ -111,8 +111,7 @@
   .price-tag .amount { font-size: 2.5rem; font-weight: 300; color: var(--zlatna); }
   .price-tag .currency { font-size: 1.2rem; color: var(--zlatna); }
   .price-tag .per { font-size: .85rem; color: var(--text-lt); }
-  .cal-embed-wrap { border: 2px solid var(--zlatna); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 40px rgba(201,168,76,0.15); background: var(--bijela); align-self: stretch; min-height: 400px; display: flex; flex-direction: column; }
-  #my-cal-inline { width: 100%; flex: 1; min-height: 0; overflow: hidden; }
+
 
   .btn-primary { display: inline-block; padding: .85rem 2rem; background: var(--zlatna); color: var(--crna); font-family: var(--font-body); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
   .btn-primary:hover { background: #b8962e; }
@@ -131,7 +130,7 @@
     .tasting-grid { grid-template-columns: 1fr; }
     .includes-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; height: auto; grid-template-rows: 200px 200px; }
-    .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .booking-grid { }
   }
 </style>
 </head>
@@ -267,15 +266,6 @@
           <div class="contact-item"><div class="contact-icon">📞</div><div><strong>+385 91 3345170</strong><br><small style="color:var(--text-lt)" data-i18n="contact.phone">Pon–Ned, 08:00–20:00</small></div></div>
           <div class="contact-item"><div class="contact-icon">✉️</div><div><strong><a href="mailto:zdenka2022@gmail.com" style="color:inherit">zdenka2022@gmail.com</a></strong><br><small style="color:var(--text-lt)" data-i18n="contact.email">Odgovaram unutar 2 sata</small></div></div>
         </div>
-      </div>
-      <div class="cal-embed-wrap">
-        <div id="my-cal-inline"></div>
-        <script type="text/javascript">
-          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-          Cal("init", {origin:"https://cal.com"});
-          Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/gastro", layout: "month_view" });
-          Cal("ui", { theme: "light", styles: { branding: { brandColor: "#C9A84C" } }, hideEventTypeDetails: false, layout: "month_view" });
-        </script>
       </div>
     </div>
   </div>
