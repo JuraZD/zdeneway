@@ -353,7 +353,7 @@
     }
     .booking-wrap {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: start;
+      align-items: stretch;
     }
     .booking-info .section-title { margin-bottom: 1rem; }
     .booking-info p {
@@ -379,33 +379,12 @@
       overflow: hidden;
       box-shadow: 0 8px 40px rgba(192,57,43,0.12);
       background: var(--bijela);
-      min-height: 600px;
+      height: 100%;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
     }
-    #my-cal-inline { width: 100%; min-height: 600px; }
-    .cal-header {
-      padding: 1.5rem 2rem 1rem;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      background: var(--bez);
-    }
-    .cal-label {
-      display: inline-block;
-      font: 600 0.7rem/1 var(--font-body);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--crvena);
-      margin-bottom: .5rem;
-    }
-    .cal-hint {
-      font: 400 0.9rem/1.5 var(--font-body);
-      color: var(--text-mid);
-      margin: 0 0 .5rem;
-    }
-    .cal-times {
-      font: 400 0.82rem/1 var(--font-body);
-      color: var(--text-lt);
-      margin-top: .5rem;
-    }
-    .cal-times strong { color: var(--text-dark); font-weight: 600; }
+    #my-cal-inline { width: 100%; flex: 1; min-height: 0; }
 
     /* ─── REVIEWS ─── */
     #reviews { background: var(--bez); }
@@ -727,11 +706,6 @@
     </div>
 
     <div class="cal-embed-wrap">
-      <div class="cal-header">
-        <span class="cal-label">Rezervacija</span>
-        <p class="cal-hint">Odaberite datum i termin — potvrda stiže automatski na e-mail.</p>
-        <p class="cal-times">Dostupni termini: <strong>10:00</strong> · <strong>12:00</strong> · <strong>18:00</strong></p>
-      </div>
       <div id="my-cal-inline"></div>
       <script type="text/javascript">
         (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
