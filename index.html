@@ -29,326 +29,7 @@
 
     html { scroll-behavior: smooth; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--bez);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      transition: padding .3s;
-    }
-    nav.scrolled { padding: .8rem 3rem; }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem; font-weight: 300; letter-spacing: .08em;
-      color: var(--bez);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--zlatna); font-style: italic; }
-
-    .nav-links {
-      display: flex; gap: 2rem; list-style: none;
-    }
-    .nav-links a {
-      font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(255,255,255,.7); text-decoration: none;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--zlatna); }
-
-    .lang-switcher {
-      display: flex; gap: .5rem;
-    }
-    .lang-btn {
-      font-family: var(--font-body); font-size: .75rem; letter-spacing: .1em;
-      text-transform: uppercase; border: 1px solid rgba(255,255,255,.25);
-      background: transparent; color: rgba(255,255,255,.6);
-      padding: .3rem .6rem; border-radius: 2px; cursor: pointer;
-      transition: all .2s;
-    }
-    .lang-btn.active, .lang-btn:hover {
-      background: var(--zlatna); border-color: var(--zlatna); color: var(--crna);
-    }
-
-    /* ─── HERO ─── */
-    #hero {
-      height: 100vh; min-height: 640px;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(160deg, rgba(0,0,0,0.78) 0%, rgba(192,57,43,0.38) 60%, rgba(201,168,76,0.28) 100%),
-        url('https://images.unsplash.com/photo-1555990793-da11153b6745?w=1600&q=80') center/cover no-repeat;
-      transform: scale(1.05);
-      animation: heroZoom 14s ease-out forwards;
-    }
-    @keyframes heroZoom { to { transform: scale(1); } }
-
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6) 100%);
-    }
-
-    .hero-content {
-      position: relative; z-index: 2;
-      text-align: center; padding: 2rem;
-      animation: fadeUp .9s .3s both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-eyebrow {
-      font-size: .8rem; letter-spacing: .3em; text-transform: uppercase;
-      color: var(--zlatna); margin-bottom: 1.2rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 9vw, 7.5rem);
-      font-weight: 300; line-height: 1.0;
-      color: var(--bijela); margin-bottom: .5rem;
-    }
-    .hero-title em {
-      font-style: italic; color: var(--zlatna);
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
-      font-weight: 400; color: rgba(255,255,255,.8);
-      margin-bottom: 2.5rem; letter-spacing: .04em;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--crvena); color: var(--bijela);
-      font-family: var(--font-body); font-size: .82rem;
-      letter-spacing: .15em; text-transform: uppercase;
-      padding: 1rem 2.4rem; text-decoration: none;
-      border: none; cursor: pointer;
-      transition: background .25s, transform .2s;
-    }
-    .btn-primary:hover { background: var(--crvena-lt); transform: translateY(-2px); }
-
-    .btn-outline {
-      display: inline-block;
-      background: transparent; color: var(--bijela);
-      font-family: var(--font-body); font-size: .82rem;
-      letter-spacing: .15em; text-transform: uppercase;
-      padding: 1rem 2.4rem; text-decoration: none;
-      border: 1px solid rgba(255,255,255,.5); cursor: pointer;
-      margin-left: 1rem;
-      transition: all .25s;
-    }
-    .btn-outline:hover { border-color: var(--zlatna); color: var(--zlatna); }
-
-    .scroll-hint {
-      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: .5rem;
-      color: rgba(255,255,255,.45); font-size: .7rem; letter-spacing: .2em;
-      text-transform: uppercase; animation: bounce 2s infinite;
-    }
-    .scroll-hint::after {
-      content: ''; width: 1px; height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(6px); }
-    }
-
-    /* ─── SECTION COMMON ─── */
-    section { padding: 7rem 3rem; }
-
-    .section-label {
-      font-size: .75rem; letter-spacing: .3em; text-transform: uppercase;
-      color: var(--crvena); margin-bottom: .8rem;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 400; line-height: 1.1;
-      color: var(--crna);
-    }
-    .section-title em { font-style: italic; color: var(--crvena); }
-    .section-divider {
-      width: 60px; height: 2px;
-      background: linear-gradient(to right, var(--zlatna), var(--crvena));
-      margin: 1.5rem 0 2rem;
-    }
-
-    /* ─── ABOUT ─── */
-    #about {
-      background: var(--crna);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-      align-items: center;
-    }
-    .about-image-wrap {
-      position: relative;
-    }
-    .about-image {
-      width: 100%; aspect-ratio: 4/5; object-fit: cover;
-      display: block;
-    }
-    .about-badge {
-      position: absolute; bottom: -1.5rem; right: -1.5rem;
-      width: 140px; height: 140px; border-radius: 50%;
-      background: var(--crvena);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: var(--bijela); text-align: center;
-      font-family: var(--font-display);
-    }
-    .about-badge strong { font-size: 2.5rem; font-weight: 600; line-height: 1; }
-    .about-badge span   { font-size: .75rem; font-style: italic; letter-spacing: .05em; }
-
-    #about .section-label { color: var(--zlatna); }
-    #about .section-title { color: var(--bez); }
-    #about .section-divider { background: linear-gradient(to right, var(--crvena), var(--zlatna)); }
-
-    .about-text {
-      font-family: var(--font-display);
-      font-size: 1.15rem; font-weight: 400;
-      line-height: 1.75; color: rgba(245,240,232,.85);
-      margin-bottom: 1.5rem;
-    }
-    .about-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 2.5rem;
-    }
-    .stat-item { border-left: 2px solid var(--crvena); padding-left: 1rem; }
-    .stat-num {
-      font-family: var(--font-display); font-size: 2.2rem;
-      font-weight: 400; color: var(--zlatna);
-    }
-    .stat-lbl {
-      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
-      color: rgba(245,240,232,.5);
-    }
-
-    /* ─── TOURS ─── */
-    #tours { background: var(--bez); }
-
-    .tours-header { max-width: 540px; margin-bottom: 4rem; }
-
-    .tours-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .tour-card {
-      background: var(--bijela);
-      overflow: hidden; cursor: pointer;
-      transition: transform .3s, box-shadow .3s;
-      box-shadow: 0 4px 20px rgba(0,0,0,.07);
-    }
-    .tour-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.14); }
-
-    .tour-img-wrap { position: relative; overflow: hidden; }
-    .tour-img {
-      width: 100%; height: 240px; object-fit: cover;
-      transition: transform .5s;
-    }
-    .tour-card:hover .tour-img { transform: scale(1.05); }
-
-    .tour-tag {
-      position: absolute; top: 1rem; left: 1rem;
-      background: var(--crvena); color: var(--bijela);
-      font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
-      padding: .3rem .7rem;
-    }
-
-    .tour-body { padding: 1.8rem; }
-
-    .tour-meta {
-      display: flex; gap: 1.2rem; margin-bottom: 1rem;
-      font-size: .78rem; color: var(--text-lt);
-      letter-spacing: .06em;
-    }
-    .tour-meta span::before { margin-right: .35rem; }
-    .tour-meta .dur::before { content: '⏱'; }
-    .tour-meta .grp::before { content: '👥'; }
-    .tour-meta .lng::before { content: '🌐'; }
-
-    .tour-title {
-      font-family: var(--font-display);
-      font-size: 1.55rem; font-weight: 400;
-      color: var(--crna); margin-bottom: .8rem;
-      line-height: 1.2;
-    }
-    .tour-desc {
-      font-size: .88rem; line-height: 1.65;
-      color: var(--text-mid); margin-bottom: 1.5rem;
-    }
-    .tour-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid rgba(0,0,0,.07); padding-top: 1.2rem;
-    }
-    .tour-price {
-      font-family: var(--font-display); font-size: 1.8rem;
-      font-weight: 300; color: var(--crna);
-    }
-    .tour-price sup { font-size: .9rem; vertical-align: super; }
-    .tour-price small { font-size: .8rem; color: var(--text-lt); font-family: var(--font-body); }
-
-    .btn-book {
-      background: var(--crna); color: var(--bijela);
-      font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
-      padding: .7rem 1.4rem; border: none; cursor: pointer;
-      transition: background .2s;
-    }
-    .btn-book:hover { background: var(--crvena); }
-
-    /* ─── GALLERY ─── */
-    #gallery { background: var(--crna); padding-bottom: 5rem; }
-    #gallery .section-label { color: var(--zlatna); }
-    #gallery .section-title { color: var(--bez); }
-    #gallery .section-divider { margin-bottom: 3rem; }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 260px 260px;
-      gap: 8px;
-    }
-    .gallery-item {
-      overflow: hidden; position: relative; cursor: pointer;
-    }
-    .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
-    .gallery-item:nth-child(4) { grid-column: 3 / 5; grid-row: 2 / 3; }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .5s, filter .4s;
-      filter: brightness(.85) saturate(.9);
-    }
-    .gallery-item:hover img { transform: scale(1.07); filter: brightness(1) saturate(1.1); }
-    .gallery-item::after {
-      content: attr(data-caption);
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,.85));
-      color: rgba(245,240,232,.9);
-      font-family: var(--font-display); font-style: italic;
-      font-size: 1rem; padding: 1rem 1.2rem .8rem;
-      opacity: 0; transition: opacity .3s;
-    }
-    .gallery-item:hover::after { opacity: 1; }
-
-    /* ─── BOOKING ─── */
+@@ -351,60 +352,94 @@
     #booking {
       background: linear-gradient(135deg, var(--bez) 0%, var(--bez) 100%);
     }
@@ -443,31 +124,7 @@
       font-size: 1.05rem; font-weight: 300; font-style: italic;
       color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem;
     }
-    .reviewer { display: flex; align-items: center; gap: .8rem; }
-    .reviewer-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--crna); display: flex; align-items: center;
-      justify-content: center; color: var(--zlatna);
-      font-family: var(--font-display); font-size: 1.1rem; font-weight: 400;
-    }
-    .reviewer-name { font-weight: 500; font-size: .9rem; }
-    .reviewer-origin { font-size: .78rem; color: var(--text-lt); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--crna);
-      padding: 4rem 3rem 2rem;
-    }
-    .footer-top {
-      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 4rem; padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .footer-brand {
-      font-family: var(--font-display); font-size: 1.8rem;
-      font-weight: 300; color: var(--bez); margin-bottom: 1rem;
-    }
-    .footer-brand em { font-style: italic; color: var(--zlatna); }
+@@ -436,51 +471,53 @@
     .footer-tagline {
       font-size: .88rem; color: rgba(255,255,255,.45);
       line-height: 1.6; max-width: 280px;
@@ -521,16 +178,7 @@
   <ul class="nav-links">
     <li><a href="#about"   data-i18n="nav.about">O Meni</a></li>
     <li><a href="#tours"   data-i18n="nav.tours">Ture</a></li>
-    <li><a href="#gallery" data-i18n="nav.gallery">Galerija</a></li>
-    <li><a href="#booking" data-i18n="nav.book">Rezervacija</a></li>
-    <li><a href="#reviews" data-i18n="nav.reviews">Recenzije</a></li>
-  </ul>
-
-  <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('hr')">HR</button>
-    <button class="lang-btn"       onclick="setLang('en')">EN</button>
-    <button class="lang-btn"       onclick="setLang('fr')">FR</button>
-  </div>
+@@ -497,250 +534,259 @@
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -790,35 +438,7 @@
         </div>
       </div>
     </div>
-
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="review-text" data-i18n="reviews.r2.text">
-        "La gita in barca alle isole è stata la migliore esperienza del nostro viaggio. Zdenka conosce ogni angolo della costa e parla un ottimo francese."
-      </p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">M</div>
-        <div>
-          <div class="reviewer-name">Marco & Giulia</div>
-          <div class="reviewer-origin">🇮🇹 Milano, Italija</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="review-text" data-i18n="reviews.r3.text">
-        "The food tour was absolutely extraordinary. Local wine, fresh oysters, Pag cheese — Zdenka knows every producer personally. Highly recommend!"
-      </p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">J</div>
-        <div>
-          <div class="reviewer-name">James & Patricia</div>
-          <div class="reviewer-origin">🇬🇧 London, UK</div>
-        </div>
-      </div>
-    </div>
-  </div>
+@@ -776,57 +822,57 @@
 </section>
 
 <!-- ─── FOOTER ─── -->
@@ -876,10 +496,7 @@ const TRANSLATIONS = {
     "about.p2": "Kao licencirana turistička vodiča Zadarske županije, govorim engleski i francuski. Svaka tura je personalizirana — nema dva ista izleta.",
     "about.stat1": "TripAdvisor ocjena",
     "about.stat2": "Zadovoljnih gostiju",
-    "about.stat3": "Različitih tura",
-    "tours.label": "Što nudim",
-    "tours.tag.popular": "Najpopularnije",
-    "tours.tag.new": "Novo",
+@@ -837,50 +883,53 @@ const TRANSLATIONS = {
     "tours.tag.food": "Gastronomija",
     "tours.t1.dur": "2,5 sata",
     "tours.t1.grp": "Max 8 osoba",
@@ -933,14 +550,7 @@ const TRANSLATIONS = {
     "hero.scroll": "Scroll",
     "about.label": "Your guide",
     "about.badge": "years experience",
-    "about.p1": "Born and raised in Zadar, I've turned my passion for Dalmatian history and culture into unforgettable experiences for thousands of guests from around the world.",
-    "about.p2": "As a licensed tourist guide for Zadar County, I speak English and French. Every tour is personalised — no two experiences are alike.",
-    "about.stat1": "TripAdvisor rating",
-    "about.stat2": "Happy guests",
-    "about.stat3": "Different tours",
-    "tours.label": "What I offer",
-    "tours.tag.popular": "Most popular",
-    "tours.tag.new": "New",
+@@ -895,50 +944,53 @@ const TRANSLATIONS = {
     "tours.tag.food": "Gastronomy",
     "tours.t1.dur": "2.5 hours",
     "tours.t1.grp": "Max 8 people",
@@ -994,14 +604,7 @@ const TRANSLATIONS = {
     "hero.scroll": "Défiler",
     "about.label": "Votre guide",
     "about.badge": "ans d'expérience",
-    "about.p1": "Née et grandi à Zadar, j'ai transformé ma passion pour l'histoire et la culture dalmate en expériences inoubliables pour des milliers de visiteurs du monde entier.",
-    "about.p2": "En tant que guide touristique agréée du comté de Zadar, je parle anglais et français. Chaque visite est personnalisée — aucune expérience n'est identique.",
-    "about.stat1": "Note TripAdvisor",
-    "about.stat2": "Visiteurs satisfaits",
-    "about.stat3": "Visites différentes",
-    "tours.label": "Ce que je propose",
-    "tours.tag.popular": "Le plus populaire",
-    "tours.tag.new": "Nouveau",
+@@ -953,80 +1005,87 @@ const TRANSLATIONS = {
     "tours.tag.food": "Gastronomie",
     "tours.t1.dur": "2h30",
     "tours.t1.grp": "Max 8 personnes",
