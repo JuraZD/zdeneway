@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Privatne ture u Zadru sa Zdenkom Rinčić: stari grad, otoci i gastro iskustva na hrvatskom, engleskom i francuskom jeziku." />
   <title>Zadar Private Tours – Zdenka Rinčić</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
@@ -373,15 +374,49 @@
       flex-shrink: 0;
     }
 
+    .cal-shell {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(192,57,43,.12) 0%, rgba(255,255,255,1) 55%);
+      border: 2px solid rgba(192,57,43,.35);
+      border-radius: 18px;
+      padding: 1.1rem;
+      box-shadow: 0 18px 46px rgba(0,0,0,.12);
+    }
+    .cal-shell::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--crvena), var(--zlatna));
+    }
+    .cal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .75rem; margin-bottom: .9rem; padding: 0 .2rem;
+    }
+    .cal-header h3 {
+      font-family: var(--font-display); font-size: 1.25rem;
+      font-weight: 500; color: var(--crna);
+    }
+    .cal-header span {
+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--crvena); background: rgba(192,57,43,.1);
+      border: 1px solid rgba(192,57,43,.25); padding: .35rem .55rem; border-radius: 999px;
+    }
     .cal-embed-wrap {
       background: var(--bijela);
-      box-shadow: 0 8px 40px rgba(0,0,0,.1);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
       overflow: hidden;
       min-height: 600px;
     }
     #my-cal-inline {
       width: 100%;
       min-height: 600px;
+    }
+    .cal-note {
+      margin-top: .7rem; font-size: .78rem; color: var(--text-lt);
+      letter-spacing: .03em;
     }
 
     /* ─── REVIEWS ─── */
@@ -458,7 +493,9 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-links { display: flex; width: 100%; justify-content: space-between; gap: .8rem; order: 3; }
+    .nav-links a { font-size: .7rem; }
+    nav { flex-wrap: wrap; row-gap: .6rem; }
       section { padding: 5rem 1.5rem; }
       #about { grid-template-columns: 1fr; gap: 3rem; }
       .about-badge { right: 0; bottom: -1rem; }
@@ -519,9 +556,11 @@
       src="zdenka.jpg"
       alt="Zdenka Rinčić – turistička vodiča"
       class="about-image"
+      loading="lazy"
+      decoding="async"
     />
     <div class="about-badge">
-      <strong>3</strong>
+      <strong>13</strong>
       <span data-i18n="about.badge">godina iskustva</span>
     </div>
   </div>
@@ -568,7 +607,7 @@
     <div class="tour-card">
       <div class="tour-img-wrap">
         <img src="https://images.unsplash.com/photo-1668450418518-1b3538a02537?w=700&q=85"
-             alt="Zadar Stari Grad" class="tour-img" />
+             alt="Zadar Stari Grad" class="tour-img" loading="lazy" decoding="async" />
         <div class="tour-tag" data-i18n="tours.tag.popular">Najpopularnije</div>
       </div>
       <div class="tour-body">
@@ -592,7 +631,7 @@
     <div class="tour-card">
       <div class="tour-img-wrap">
         <img src="https://live.staticflickr.com/65535/53400685629_b54e5f3bb2_b.jpg"
-             alt="Otok Ugljan – pogled prema kopnu" class="tour-img" />
+             alt="Otok Ugljan – pogled prema kopnu" class="tour-img" loading="lazy" decoding="async" />
         <div class="tour-tag" data-i18n="tours.tag.new" style="background:var(--crna-mid)">Novo</div>
       </div>
       <div class="tour-body">
@@ -616,7 +655,7 @@
     <div class="tour-card">
       <div class="tour-img-wrap">
         <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85"
-             alt="Dalmatinska gastronomija" class="tour-img" />
+             alt="Dalmatinska gastronomija" class="tour-img" loading="lazy" decoding="async" />
         <div class="tour-tag" data-i18n="tours.tag.food" style="background: var(--zlatna); color: var(--crna)">Gastronomija</div>
       </div>
       <div class="tour-body">
@@ -647,22 +686,22 @@
 
   <div class="gallery-grid">
     <div class="gallery-item" data-caption="Zadar Stari Grad">
-      <img src="https://images.unsplash.com/photo-1661178434473-6daf1940d913?w=1200&q=85" alt="Zadar stari grad panorama" />
+      <img src="https://images.unsplash.com/photo-1661178434473-6daf1940d913?w=1200&q=85" alt="Zadar stari grad panorama" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-item" data-caption="Crkva sv. Donata">
-      <img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=700&q=85" alt="Crkva sv. Donata i Rimski forum" />
+      <img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=700&q=85" alt="Crkva sv. Donata i Rimski forum" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-item" data-caption="Zadarska riva">
-      <img src="https://images.unsplash.com/photo-1689364481643-3753f7cda19d?w=700&q=85" alt="Zadarska riva promenada" />
+      <img src="https://images.unsplash.com/photo-1689364481643-3753f7cda19d?w=700&q=85" alt="Zadarska riva promenada" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-item" data-caption="Dalmatinska gastronomija">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=85" alt="Dalmatinska gastronomija" />
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=85" alt="Dalmatinska gastronomija" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-item" data-caption="Morske orgulje">
-      <img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=700&q=85" alt="Morske orgulje" />
+      <img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=700&q=85" alt="Morske orgulje" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-item" data-caption="Pozdrav suncu">
-      <img src="https://images.unsplash.com/photo-1539257210701-c866bec33144?w=700&q=85" alt="Pozdrav suncu iz zraka" />
+      <img src="https://images.unsplash.com/photo-1539257210701-c866bec33144?w=700&q=85" alt="Pozdrav suncu iz zraka" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
@@ -703,22 +742,29 @@
       </div>
     </div>
 
-    <div class="cal-embed-wrap">
-      <div id="my-cal-inline"></div>
-      <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", {origin:"https://cal.com"});
-        Cal("inline", {
-          elementOrSelector: "#my-cal-inline",
-          calLink: "jurica-devic-d08io2/zadar-tour",
-          layout: "month_view"
-        });
-        Cal("ui", {
-          styles: { branding: { brandColor: "#C0392B" } },
-          hideEventTypeDetails: false,
-          layout: "month_view"
-        });
-      </script>
+    <div class="cal-shell">
+      <div class="cal-header">
+        <h3 data-i18n="booking.cal.title">Kalendar dostupnih termina</h3>
+        <span data-i18n="booking.cal.badge">Brza potvrda</span>
+      </div>
+      <div class="cal-embed-wrap">
+        <div id="my-cal-inline"></div>
+        <script type="text/javascript">
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", {origin:"https://cal.com"});
+          Cal("inline", {
+            elementOrSelector: "#my-cal-inline",
+            calLink: "jurica-devic-d08io2/zadar-tour",
+            layout: "month_view"
+          });
+          Cal("ui", {
+            styles: { branding: { brandColor: "#C0392B" } },
+            hideEventTypeDetails: false,
+            layout: "month_view"
+          });
+        </script>
+      </div>
+      <p class="cal-note" data-i18n="booking.cal.note">Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.</p>
     </div>
 
   </div>
@@ -798,13 +844,13 @@
       <ul>
         <li><a href="tel:+38591334517">+385 91 3345170</a></li>
         <li><a href="mailto:zdenka2022@gmail.com">zdenka2022@gmail.com</a></li>
-        <li><a href="#" data-i18n="footer.col2.ig">Instagram</a></li>
-        <li><a href="#" data-i18n="footer.col2.ta">TripAdvisor profil</a></li>
+        <li><span data-i18n="footer.col2.ig">Instagram</span></li>
+        <li><span data-i18n="footer.col2.ta">TripAdvisor profil</span></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Zdenka Rinčić · Zadar Private Tours</span>
+    <span>© 2026 Zdenka Rinčić · Zadar Private Tours</span>
     <span data-i18n="footer.rights">Sva prava pridržana</span>
   </div>
 </footer>
@@ -859,6 +905,9 @@ const TRANSLATIONS = {
     "booking.email.label": "Odgovaram unutar 2 sata",
     "booking.location": "Zadar, Hrvatska",
     "booking.meeting": "Dogovorit ćemo mjesto susreta",
+    "booking.cal.title": "Kalendar dostupnih termina",
+    "booking.cal.badge": "Brza potvrda",
+    "booking.cal.note": "Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.",
     "reviews.label": "Što kažu gosti",
     "reviews.r1.text": "\"Zdenka je bila nevjerojatna! Pokazala nam je mjesta koja bismo sami nikad pronašli. Tura o rimskom forumu bila je posebno fascinantna.\"",
     "reviews.r2.text": "\"La gita in barca alle isole è stata la migliore esperienza del nostro viaggio. Zdenka conosce ogni angolo della costa e parla un ottimo francese.\"",
@@ -917,6 +966,9 @@ const TRANSLATIONS = {
     "booking.email.label": "I reply within 2 hours",
     "booking.location": "Zadar, Croatia",
     "booking.meeting": "We'll arrange the meeting point",
+    "booking.cal.title": "Availability calendar",
+    "booking.cal.badge": "Fast confirmation",
+    "booking.cal.note": "Choose your date and time, and I’ll confirm your reservation right away.",
     "reviews.label": "Guest reviews",
     "reviews.r1.text": "\"Zdenka was incredible! She showed us places we would never have found on our own. The Roman Forum tour was especially fascinating.\"",
     "reviews.r2.text": "\"The boat trip to the islands was the best experience of our journey. Zdenka speaks excellent French and knows every corner of the coast.\"",
@@ -975,6 +1027,9 @@ const TRANSLATIONS = {
     "booking.email.label": "Je réponds dans les 2 heures",
     "booking.location": "Zadar, Croatie",
     "booking.meeting": "Nous conviendrons du point de rendez-vous",
+    "booking.cal.title": "Calendrier des disponibilités",
+    "booking.cal.badge": "Confirmation rapide",
+    "booking.cal.note": "Choisissez la date et l’heure, et je confirme votre réservation immédiatement.",
     "reviews.label": "Avis des visiteurs",
     "reviews.r1.text": "\"Zdenka était incroyable ! Elle nous a montré des endroits que nous n'aurions jamais trouvés seuls. La visite du Forum Romain était particulièrement fascinante.\"",
     "reviews.r2.text": "\"La croisière en bateau vers les îles a été la meilleure expérience de notre voyage. Zdenka parle un excellent français et connaît chaque recoin de la côte.\"",
@@ -993,6 +1048,7 @@ let currentLang = 'hr';
 
 function setLang(lang) {
   currentLang = lang;
+  localStorage.setItem('preferredLang', lang);
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
   });
@@ -1027,6 +1083,9 @@ window.setLang = function(lang) {
   document.querySelector('.hero-title').innerHTML =
     `${line1}<br><em>${line2}</em>`;
 };
+
+const savedLang = localStorage.getItem('preferredLang') || 'hr';
+window.setLang(savedLang);
 </script>
 </body>
 </html>

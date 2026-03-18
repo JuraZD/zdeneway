@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Gastro tura Zadar i okolica: maslinovo ulje, paški sir, lokalna vina i autentične dalmatinske konobe." />
 <title>Okusi Dalmacije – Hrana & Vino · Zdenka Rinčić</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -111,8 +112,14 @@
   .price-tag .amount { font-size: 2.5rem; font-weight: 300; color: var(--zlatna); }
   .price-tag .currency { font-size: 1.2rem; color: var(--zlatna); }
   .price-tag .per { font-size: .85rem; color: var(--text-lt); }
-  .cal-embed-wrap { background: var(--bijela); box-shadow: 0 8px 40px rgba(0,0,0,.1); overflow: hidden; min-height: 600px; }
+  .cal-shell { position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(201,168,76,.28) 0%, rgba(245,240,232,1) 100%); border: 3px solid rgba(201,168,76,.58); border-radius: 22px; padding: 1.2rem; box-shadow: 0 22px 52px rgba(0,0,0,.16); margin-top: .4rem; }
+  .cal-shell::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--zlatna), var(--bez)); }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .9rem; padding: 0 .2rem; }
+  .cal-header h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--crna); }
+  .cal-header span { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--zlatna); background: rgba(201,168,76,.16); border: 1px solid rgba(201,168,76,.4); padding: .35rem .55rem; border-radius: 999px; }
+  .cal-embed-wrap { background: var(--bijela); border: 1px solid rgba(0,0,0,.08); border-radius: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); overflow: hidden; min-height: 600px; }
   #my-cal-inline { width: 100%; min-height: 600px; }
+  .cal-note { margin-top: .7rem; font-size: .78rem; color: var(--text-lt); letter-spacing: .03em; }
 
   .btn-primary { display: inline-block; padding: .85rem 2rem; background: var(--zlatna); color: var(--crna); font-family: var(--font-body); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
   .btn-primary:hover { background: #b8962e; }
@@ -122,7 +129,9 @@
 
   @media (max-width: 960px) {
     nav { padding: 1rem 1.5rem; } nav.scrolled { padding: .7rem 1.5rem; }
-    .nav-links { display: none; }
+    .nav-links { display: flex; width: 100%; justify-content: space-between; gap: .8rem; order: 3; }
+    .nav-links a { font-size: .7rem; }
+    nav { flex-wrap: wrap; row-gap: .6rem; }
     .hero-content { padding: 0 1.5rem 3rem; }
     .section-wrap { padding: 4rem 1.5rem; }
     .tasting-strip { padding: 4rem 1.5rem; }
@@ -204,7 +213,7 @@
     <h2 class="section-title" data-i18n-html="tasting.title">Okusi koje <em>nećete zaboraviti</em></h2>
     <div class="section-divider"></div>
     <div class="tasting-grid">
-      <div class="tasting-card"><div class="tasting-icon">🫒</div><h4 data-i18n="t1.name">Maslinovo ulje</h4><p data-i18n="t1.desc">Ekstra djevičansko ulje s obroncka Velebita — zlatno-zelene boje, voćno s gorko-pikantnom završnicom.</p></div>
+      <div class="tasting-card"><div class="tasting-icon">🫒</div><h4 data-i18n="t1.name">Maslinovo ulje</h4><p data-i18n="t1.desc">Ekstra djevičansko ulje s obronaka Velebita — zlatno-zelene boje, voćno s gorko-pikantnom završnicom.</p></div>
       <div class="tasting-card"><div class="tasting-icon">🧀</div><h4 data-i18n="t2.name">Paški sir</h4><p data-i18n="t2.desc">Jedinstven okus zahvaljujući ovcama koje pasu na aromatičnom bilju Paga. Ručno pravljeno, odležano u maslinovom ulju.</p></div>
       <div class="tasting-card"><div class="tasting-icon">🍷</div><h4 data-i18n="t3.name">Lokalna vina</h4><p data-i18n="t3.desc">Maraština — suho bijelo s mineralnom notom. Babić — crno s aromom višnje. Prošek — slatko desertno vino.</p></div>
     </div>
@@ -247,9 +256,9 @@
     <h2 class="section-title" data-i18n-html="gallery.title">Hrana i <em>tradicija</em></h2>
     <div class="section-divider"></div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85" alt="Dalmatinska kuhinja" /></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85" alt="Lokalna hrana" /></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=85" alt="Vinska degustacija" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85" alt="Dalmatinska kuhinja" loading="lazy" decoding="async" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85" alt="Lokalna hrana" loading="lazy" decoding="async" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=85" alt="Vinska degustacija" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 </div>
@@ -268,14 +277,21 @@
           <div class="contact-item"><div class="contact-icon">✉️</div><div><strong><a href="mailto:zdenka2022@gmail.com" style="color:inherit">zdenka2022@gmail.com</a></strong><br><small style="color:var(--text-lt)" data-i18n="contact.email">Odgovaram unutar 2 sata</small></div></div>
         </div>
       </div>
-      <div class="cal-embed-wrap">
-        <div id="my-cal-inline"></div>
-        <script type="text/javascript">
-          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-          Cal("init", {origin:"https://cal.com"});
-          Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/gastro", layout: "month_view" });
-          Cal("ui", { styles: { branding: { brandColor: "#000000" } }, hideEventTypeDetails: false, layout: "month_view" });
-        </script>
+      <div class="cal-shell">
+        <div class="cal-header">
+          <h3 data-i18n="booking.cal.title">Kalendar dostupnih termina</h3>
+          <span data-i18n="booking.cal.badge">Brza potvrda</span>
+        </div>
+        <div class="cal-embed-wrap">
+          <div id="my-cal-inline"></div>
+          <script type="text/javascript">
+            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", {origin:"https://cal.com"});
+            Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/gastro", layout: "month_view" });
+            Cal("ui", { styles: { branding: { brandColor: "#C9A84C" } }, hideEventTypeDetails: false, layout: "month_view" });
+          </script>
+        </div>
+        <p class="cal-note" data-i18n="booking.cal.note">Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.</p>
       </div>
     </div>
   </div>
@@ -283,7 +299,7 @@
 
 <footer>
   <p style="margin-bottom:.5rem"><a href="index.html">Zdenka Rinčić · Zadar Private Tours</a></p>
-  <p>© 2025 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
+  <p>© 2026 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
 </footer>
 
 <script>
@@ -304,7 +320,7 @@ const TRANSLATIONS = {
     "s4.title":"Konoba — Ručak & degustacija vina","s4.desc":"Ručak u autentičnoj konobi: pršut, marinirana riba, peka po narudžbi. Degustacija lokalnih vina — maraština, babić i prošek.",
     "s5.title":"Slatki završetak","s5.desc":"Degustacija dalmatinskih slastica — rozata, fritule, kroštule i arancini. Kava i razgovor o svemu što smo okusili.",
     "tasting.label":"Što ćete kušati","tasting.title":"Okusi koje <em>nećete zaboraviti</em>",
-    "t1.name":"Maslinovo ulje","t1.desc":"Ekstra djevičansko ulje s obroncka Velebita — zlatno-zelene boje, voćno s gorko-pikantnom završnicom.",
+    "t1.name":"Maslinovo ulje","t1.desc":"Ekstra djevičansko ulje s obronaka Velebita — zlatno-zelene boje, voćno s gorko-pikantnom završnicom.",
     "t2.name":"Paški sir","t2.desc":"Jedinstven okus zahvaljujući ovcama koje pasu na aromatičnom bilju Paga. Ručno pravljeno, odležano u maslinovom ulju.",
     "t3.name":"Lokalna vina","t3.desc":"Maraština — suho bijelo s mineralnom notom. Babić — crno s aromom višnje. Prošek — slatko desertno vino.",
     "details.label":"Detalji ture","details.title":"Što je <em>uključeno</em>",
@@ -314,6 +330,8 @@ const TRANSLATIONS = {
     "gallery.label":"Galerija","gallery.title":"Hrana i <em>tradicija</em>",
     "booking.label":"Rezervacija","booking.title":"Odaberite <em>termin</em>",
     "booking.desc":"Gastro tura polazi ujutro svaki dan. Za grupe 6+ osoba preporučujemo rezervaciju tjedan dana unaprijed.",
+    "booking.cal.title":"Kalendar dostupnih termina","booking.cal.badge":"Brza potvrda",
+    "booking.cal.note":"Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.",
     "contact.phone":"Pon–Ned, 08:00–20:00","contact.email":"Odgovaram unutar 2 sata","footer.rights":"Sva prava pridržana",
   },
   en: {
@@ -342,6 +360,8 @@ const TRANSLATIONS = {
     "gallery.label":"Gallery","gallery.title":"Food and <em>tradition</em>",
     "booking.label":"Reservation","booking.title":"Choose your <em>date</em>",
     "booking.desc":"Gastro tour departs every morning. For groups of 6+, we recommend booking a week in advance.",
+    "booking.cal.title":"Availability calendar","booking.cal.badge":"Fast confirmation",
+    "booking.cal.note":"Choose your date and time, and I’ll confirm your reservation right away.",
     "contact.phone":"Mon–Sun, 08:00–20:00","contact.email":"I reply within 2 hours","footer.rights":"All rights reserved",
   },
   fr: {
@@ -370,6 +390,8 @@ const TRANSLATIONS = {
     "gallery.label":"Galerie","gallery.title":"Nourriture et <em>tradition</em>",
     "booking.label":"Réservation","booking.title":"Choisissez votre <em>date</em>",
     "booking.desc":"La visite gastronomique part chaque matin. Pour les groupes de 6+, nous recommandons de réserver une semaine à l'avance.",
+    "booking.cal.title":"Calendrier des disponibilités","booking.cal.badge":"Confirmation rapide",
+    "booking.cal.note":"Choisissez la date et l’heure, et je confirme votre réservation immédiatement.",
     "contact.phone":"Lun–Dim, 08h00–20h00","contact.email":"Je réponds dans les 2 heures","footer.rights":"Tous droits réservés",
   }
 };
@@ -378,6 +400,7 @@ let currentLang = 'hr';
 
 function setLang(lang) {
   currentLang = lang;
+  localStorage.setItem('preferredLang', lang);
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
   });
@@ -395,6 +418,9 @@ function setLang(lang) {
 window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
 });
+
+const savedLang = localStorage.getItem('preferredLang') || 'hr';
+setLang(savedLang);
 </script>
 </body>
 </html>

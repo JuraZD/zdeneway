@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Historijska pješačka tura kroz Zadar stari grad: rimski forum, sv. Donat, Morske orgulje i Pozdrav suncu." />
 <title>Zadar Stari Grad – Historijska Šetnja · Zdenka Rinčić</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -127,8 +128,14 @@
   .price-tag .amount { font-size: 2.5rem; font-weight: 300; color: var(--crvena); }
   .price-tag .currency { font-size: 1.2rem; color: var(--crvena); }
   .price-tag .per { font-size: .85rem; color: var(--text-lt); }
-  .cal-embed-wrap { background: var(--bijela); box-shadow: 0 8px 40px rgba(0,0,0,.1); overflow: hidden; min-height: 600px; }
+  .cal-shell { position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(192,57,43,.2) 0%, rgba(245,240,232,1) 100%); border: 3px solid rgba(192,57,43,.45); border-radius: 22px; padding: 1.2rem; box-shadow: 0 22px 52px rgba(0,0,0,.16); margin-top: .4rem; }
+  .cal-shell::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--crvena), var(--zlatna)); }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .9rem; padding: 0 .2rem; }
+  .cal-header h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--crna); }
+  .cal-header span { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--crvena); background: rgba(192,57,43,.1); border: 1px solid rgba(192,57,43,.25); padding: .35rem .55rem; border-radius: 999px; }
+  .cal-embed-wrap { background: var(--bijela); border: 1px solid rgba(0,0,0,.08); border-radius: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); overflow: hidden; min-height: 600px; }
   #my-cal-inline { width: 100%; min-height: 600px; }
+  .cal-note { margin-top: .7rem; font-size: .78rem; color: var(--text-lt); letter-spacing: .03em; }
 
   /* BTN */
   .btn-primary {
@@ -148,7 +155,9 @@
   @media (max-width: 960px) {
     nav { padding: 1rem 1.5rem; }
     nav.scrolled { padding: .7rem 1.5rem; }
-    .nav-links { display: none; }
+    .nav-links { display: flex; width: 100%; justify-content: space-between; gap: .8rem; order: 3; }
+    .nav-links a { font-size: .7rem; }
+    nav { flex-wrap: wrap; row-gap: .6rem; }
     .hero-content { padding: 0 1.5rem 3rem; }
     .section-wrap { padding: 4rem 1.5rem; }
     .overview-grid { grid-template-columns: 1fr 1fr; }
@@ -278,9 +287,9 @@
     <h2 class="section-title" data-i18n-html="gallery.title">Prizori <em>stare jezgre</em></h2>
     <div class="section-divider"></div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1668450418518-1b3538a02537?w=800&q=85" alt="Zadar stari grad" /></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=800&q=85" alt="Crkva sv. Donata i Rimski forum" /></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=800&q=85" alt="Morske orgulje" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1668450418518-1b3538a02537?w=800&q=85" alt="Zadar stari grad" loading="lazy" decoding="async" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1739088771492-c1807db9596c?w=800&q=85" alt="Crkva sv. Donata i Rimski forum" loading="lazy" decoding="async" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1701683843662-7da096c96581?w=800&q=85" alt="Morske orgulje" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 </div>
@@ -306,14 +315,21 @@
           </div>
         </div>
       </div>
-      <div class="cal-embed-wrap">
-        <div id="my-cal-inline"></div>
-        <script type="text/javascript">
-          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-          Cal("init", {origin:"https://cal.com"});
-          Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/zadar-tour", layout: "month_view" });
-          Cal("ui", { styles: { branding: { brandColor: "#C0392B" } }, hideEventTypeDetails: false, layout: "month_view" });
-        </script>
+      <div class="cal-shell">
+        <div class="cal-header">
+          <h3 data-i18n="booking.cal.title">Kalendar dostupnih termina</h3>
+          <span data-i18n="booking.cal.badge">Brza potvrda</span>
+        </div>
+        <div class="cal-embed-wrap">
+          <div id="my-cal-inline"></div>
+          <script type="text/javascript">
+            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", {origin:"https://cal.com"});
+            Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/zadar-tour", layout: "month_view" });
+            Cal("ui", { styles: { branding: { brandColor: "#C0392B" } }, hideEventTypeDetails: false, layout: "month_view" });
+          </script>
+        </div>
+        <p class="cal-note" data-i18n="booking.cal.note">Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.</p>
       </div>
     </div>
   </div>
@@ -321,7 +337,7 @@
 
 <footer>
   <p style="margin-bottom:.5rem"><a href="index.html">Zdenka Rinčić · Zadar Private Tours</a></p>
-  <p>© 2025 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
+  <p>© 2026 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
 </footer>
 
 <script>
@@ -356,6 +372,8 @@ const TRANSLATIONS = {
     "gallery.label": "Galerija", "gallery.title": "Prizori <em>stare jezgre</em>",
     "booking.label": "Rezervacija", "booking.title": "Odaberite <em>termin</em>",
     "booking.desc": "Tura je dostupna svaki dan. Odaberite datum i termin u kalendaru — potvrda stiže automatski na e-mail.",
+    "booking.cal.title": "Kalendar dostupnih termina", "booking.cal.badge": "Brza potvrda",
+    "booking.cal.note": "Odaberi datum i vrijeme, a potvrdu termina šaljem odmah nakon rezervacije.",
     "contact.phone": "Pon–Ned, 08:00–20:00", "contact.email": "Odgovaram unutar 2 sata",
     "footer.rights": "Sva prava pridržana",
   },
@@ -389,6 +407,8 @@ const TRANSLATIONS = {
     "gallery.label": "Gallery", "gallery.title": "Scenes from the <em>old town</em>",
     "booking.label": "Reservation", "booking.title": "Choose your <em>date</em>",
     "booking.desc": "Tour available every day. Choose a date and time — confirmation arrives automatically by email.",
+    "booking.cal.title": "Availability calendar", "booking.cal.badge": "Fast confirmation",
+    "booking.cal.note": "Choose your date and time, and I’ll confirm your reservation right away.",
     "contact.phone": "Mon–Sun, 08:00–20:00", "contact.email": "I reply within 2 hours",
     "footer.rights": "All rights reserved",
   },
@@ -422,6 +442,8 @@ const TRANSLATIONS = {
     "gallery.label": "Galerie", "gallery.title": "Scènes de la <em>vieille ville</em>",
     "booking.label": "Réservation", "booking.title": "Choisissez votre <em>date</em>",
     "booking.desc": "Visite disponible tous les jours. Choisissez une date — la confirmation arrive automatiquement par e-mail.",
+    "booking.cal.title": "Calendrier des disponibilités", "booking.cal.badge": "Confirmation rapide",
+    "booking.cal.note": "Choisissez la date et l’heure, et je confirme votre réservation immédiatement.",
     "contact.phone": "Lun–Dim, 08h00–20h00", "contact.email": "Je réponds dans les 2 heures",
     "footer.rights": "Tous droits réservés",
   }
@@ -431,6 +453,7 @@ let currentLang = 'hr';
 
 function setLang(lang) {
   currentLang = lang;
+  localStorage.setItem('preferredLang', lang);
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
   });
@@ -448,6 +471,9 @@ function setLang(lang) {
 window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
 });
+
+const savedLang = localStorage.getItem('preferredLang') || 'hr';
+setLang(savedLang);
 </script>
 </body>
 </html>
