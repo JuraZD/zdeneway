@@ -1,0 +1,9 @@
+file:///home/jurica/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.4/skills/brainstorming/scripts/server.js:1
+const crypto = require('crypto');
+               ^
+
+ReferenceError: require is not defined
+    at file:///home/jurica/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.4/skills/brainstorming/scripts/server.js:1:16
+    at ModuleJob.run (internal/modules/esm/module_job.js:145:37)
+    at async Loader.import (internal/modules/esm/loader.js:182:24)
+    at async Object.loadESM (internal/process/esm_loader.js:68:5)
