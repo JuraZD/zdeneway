@@ -101,8 +101,11 @@
   .price-tag .amount { font-size: 2.5rem; font-weight: 300; color: var(--zlatna); }
   .price-tag .currency { font-size: 1.2rem; color: var(--zlatna); }
   .price-tag .per { font-size: .85rem; color: var(--text-lt); }
-  .cal-embed-wrap { background: var(--bijela); box-shadow: 0 8px 40px rgba(0,0,0,.1); overflow: hidden; min-height: 600px; }
+  .cal-embed-wrap { border: 2px solid var(--zlatna); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 40px rgba(201,168,76,0.15); background: var(--bijela); min-height: 600px; }
   #my-cal-inline { width: 100%; min-height: 600px; }
+  .cal-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.08); background: var(--bez); }
+  .cal-label { display: inline-block; font: 600 0.7rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--zlatna); margin-bottom: .5rem; }
+  .cal-hint { font: 400 0.9rem/1.5 var(--font-body); color: var(--text-mid); margin: 0; }
 
   .btn-primary { display: inline-block; padding: .85rem 2rem; background: var(--zlatna); color: var(--crna); font-family: var(--font-body); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
   .btn-primary:hover { background: #b8962e; }
@@ -245,12 +248,16 @@
         </div>
       </div>
       <div class="cal-embed-wrap">
+        <div class="cal-header">
+          <span class="cal-label">Rezervacija</span>
+          <p class="cal-hint">Odaberite datum i termin — potvrda stiže automatski na e-mail.</p>
+        </div>
         <div id="my-cal-inline"></div>
         <script type="text/javascript">
           (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
           Cal("init", {origin:"https://cal.com"});
           Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: "jurica-devic-d08io2/otoci", layout: "month_view" });
-          Cal("ui", { styles: { branding: { brandColor: "#C9A84C" } }, hideEventTypeDetails: false, layout: "month_view" });
+          Cal("ui", { theme: "light", styles: { branding: { brandColor: "#C9A84C" } }, hideEventTypeDetails: false, layout: "month_view" });
         </script>
       </div>
     </div>

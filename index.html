@@ -374,14 +374,31 @@
     }
 
     .cal-embed-wrap {
-      background: var(--bijela);
-      box-shadow: 0 8px 40px rgba(0,0,0,.1);
+      border: 2px solid var(--crvena);
+      border-radius: 4px;
       overflow: hidden;
+      box-shadow: 0 8px 40px rgba(192,57,43,0.12);
+      background: var(--bijela);
       min-height: 600px;
     }
-    #my-cal-inline {
-      width: 100%;
-      min-height: 600px;
+    #my-cal-inline { width: 100%; min-height: 600px; }
+    .cal-header {
+      padding: 1.5rem 2rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      background: var(--bez);
+    }
+    .cal-label {
+      display: inline-block;
+      font: 600 0.7rem/1 var(--font-body);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--crvena);
+      margin-bottom: .5rem;
+    }
+    .cal-hint {
+      font: 400 0.9rem/1.5 var(--font-body);
+      color: var(--text-mid);
+      margin: 0;
     }
 
     /* ─── REVIEWS ─── */
@@ -704,6 +721,10 @@
     </div>
 
     <div class="cal-embed-wrap">
+      <div class="cal-header">
+        <span class="cal-label">Rezervacija</span>
+        <p class="cal-hint">Odaberite datum i termin — potvrda stiže automatski na e-mail.</p>
+      </div>
       <div id="my-cal-inline"></div>
       <script type="text/javascript">
         (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -714,6 +735,7 @@
           layout: "month_view"
         });
         Cal("ui", {
+          theme: "light",
           styles: { branding: { brandColor: "#C0392B" } },
           hideEventTypeDetails: false,
           layout: "month_view"
@@ -781,7 +803,7 @@
     <div>
       <div class="footer-brand">Zdenka <em>Rinčić</em></div>
       <p class="footer-tagline" data-i18n="footer.tagline">
-        Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2013. godine.
+        Licencirana turistička vodiča Zadarske županije. Autorica nezaboravnih iskustava od 2023. godine.
       </p>
     </div>
     <div class="footer-col">
