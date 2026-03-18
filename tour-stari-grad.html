@@ -118,7 +118,7 @@
 
   /* BOOKING */
   .booking-section { background: var(--bez); }
-  .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch; }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .booking-info p { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; }
   .contact-items { display: flex; flex-direction: column; gap: 1rem; }
   .contact-item { display: flex; align-items: center; gap: 1rem; font-size: .9rem; color: var(--text-mid); }
@@ -127,8 +127,8 @@
   .price-tag .amount { font-size: 2.5rem; font-weight: 300; color: var(--crvena); }
   .price-tag .currency { font-size: 1.2rem; color: var(--crvena); }
   .price-tag .per { font-size: .85rem; color: var(--text-lt); }
-  .cal-embed-wrap { border: 2px solid var(--crvena); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 40px rgba(192,57,43,0.12); background: var(--bijela); height: 100%; min-height: 400px; display: flex; flex-direction: column; }
-  #my-cal-inline { width: 100%; flex: 1; min-height: 0; }
+  .cal-embed-wrap { border: 2px solid var(--crvena); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 40px rgba(192,57,43,0.12); background: var(--bijela); align-self: stretch; min-height: 400px; display: flex; flex-direction: column; }
+  #my-cal-inline { width: 100%; flex: 1; min-height: 0; overflow: hidden; }
 
   /* BTN */
   .btn-primary {

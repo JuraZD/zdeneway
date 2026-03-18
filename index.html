@@ -353,7 +353,7 @@
     }
     .booking-wrap {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: stretch;
+      align-items: start;
     }
     .booking-info .section-title { margin-bottom: 1rem; }
     .booking-info p {
@@ -379,12 +379,12 @@
       overflow: hidden;
       box-shadow: 0 8px 40px rgba(192,57,43,0.12);
       background: var(--bijela);
-      height: 100%;
+      align-self: stretch;
       min-height: 400px;
       display: flex;
       flex-direction: column;
     }
-    #my-cal-inline { width: 100%; flex: 1; min-height: 0; }
+    #my-cal-inline { width: 100%; flex: 1; min-height: 0; overflow: hidden; }
 
     /* ─── REVIEWS ─── */
     #reviews { background: var(--bez); }
