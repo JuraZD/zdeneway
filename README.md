@@ -24,7 +24,7 @@
 
 ## Pregled projekta
 
-Statična single-page web stranica (SPA) za privatnog turističkog vodiča koji djeluje na području Zadra i okolice. Stranica je dizajnirana s mediteranskom luksuznom estetikom — tamna mornarsko-plava paleta, zlatni akcenti i serifna tipografija (Cormorant Garamond).
+Statična **multi-page** web stranica za privatnog turističkog vodiča koji djeluje na području Zadra i okolice. Projekt ima jednu glavnu ulaznu stranicu (`index.html`) i zasebne “tour detail” stranice (`tour-*.html`) za svaku turu. Dizajn je mediteranski luksuzan — tamna mornarsko-plava paleta, zlatni akcenti i serifna tipografija (Cormorant Garamond).
 
 ### Ključne funkcionalnosti
 
@@ -42,11 +42,19 @@ Statična single-page web stranica (SPA) za privatnog turističkog vodiča koji 
 
 ```
 zadar-tour-guide/
-├── index.html        # Cijela stranica (HTML + CSS + JS u jednoj datoteci)
-└── README.md         # Ova dokumentacija
+├── index.html            # Homepage (pregled ponude, sekcije i ulaz u booking)
+├── tour-stari-grad.html  # Tour detail: privatna šetnja starim gradom
+├── tour-otoci.html       # Tour detail: otočna / brodska tura
+├── tour-gastro.html      # Tour detail: gastronomska tura
+└── README.md             # Ova dokumentacija
 ```
 
-Projekt je namjerno organiziran kao **single-file** rješenje radi jednostavnosti deploymenta — idealno za Netlify drag-and-drop ili GitHub Pages.
+Projekt je trenutno organiziran kao **multi-page** rješenje, ali svaka stranica i dalje koristi “single-file” pristup na razini pojedinog dokumenta (HTML + inline CSS + inline JS u istom `.html` fajlu). To pojednostavljuje deployment (npr. Netlify drag-and-drop ili GitHub Pages), ali povećava dupliranje logike između stranica.
+
+### Uloga stranica
+
+- **Homepage (`index.html`)**: centralna prezentacijska stranica (hero, o vodiču, pregled tura, galerija, recenzije, kontakt/booking sekcija).
+- **Tour detail (`tour-*.html`)**: zasebne landing stranice po turi s detaljima itinerara, uključenim stavkama i specifičnim booking CTA-om.
 
 Za produkcijsku verziju preporuča se razdvajanje u zasebne datoteke:
 
@@ -214,6 +222,15 @@ const TRANSLATIONS = {
 ```
 
 Pozivom `setLang('fr')` prolazi se kroz sve elemente i zamjenjuje tekst.
+
+### Gdje se održava i18n po stranicama
+
+Trenutna implementacija je **duplirana po HTML datotekama**:
+
+- `index.html` ima vlastiti `TRANSLATIONS` objekt i vlastitu `setLang()` funkciju.
+- Svaka tour detalj stranica (`tour-stari-grad.html`, `tour-otoci.html`, `tour-gastro.html`) također ima vlastiti `TRANSLATIONS` + `setLang()` blok, prilagođen sadržaju te ture.
+
+To znači da se prijevodi i i18n logika trenutno održavaju odvojeno u svakom fajlu, a ne centralno iz jednog `js/i18n.js` modula.
 
 ### Dodavanje novog jezika (npr. njemački)
 
