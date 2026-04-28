@@ -116,6 +116,8 @@
   .btn-primary { display: inline-block; padding: .85rem 2rem; background: var(--zlatna); color: var(--crna); font-family: var(--font-body); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
   .btn-primary:hover { background: #b8962e; }
 
+  .mobile-sticky-cta { display: none; position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 140; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.24); }
+
   footer { background: var(--crna); color: rgba(255,255,255,.5); padding: 2.5rem 3rem; text-align: center; font-size: .78rem; letter-spacing: .08em; }
   footer a { color: var(--zlatna); text-decoration: none; }
 
@@ -131,6 +133,8 @@
     .includes-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; height: auto; grid-template-rows: 200px 200px; }
     .booking-grid { }
+    .mobile-sticky-cta { display: block; }
+    body { padding-bottom: 5.5rem; }
   }
 </style>
 </head>
@@ -271,6 +275,8 @@
   </div>
 </div>
 
+<a href="#booking" class="btn-primary mobile-sticky-cta" data-i18n="mobile.cta">Pošalji upit</a>
+
 <footer>
   <p style="margin-bottom:.5rem"><a href="index.html">Zdenka Rinčić · Zadar Private Tours</a></p>
   <p>© 2025 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
@@ -305,6 +311,7 @@ const TRANSLATIONS = {
     "booking.label":"Rezervacija","booking.title":"Odaberite <em>termin</em>",
     "booking.desc":"Gastro tura polazi ujutro svaki dan. Za grupe 6+ osoba preporučujemo rezervaciju tjedan dana unaprijed.",
     "contact.phone":"Pon–Ned, 08:00–20:00","contact.email":"Odgovaram unutar 2 sata","footer.rights":"Sva prava pridržana",
+    "mobile.cta":"Pošalji upit",
   },
   en: {
     "nav.about":"About","nav.tours":"Tours","nav.gallery":"Gallery","nav.book":"Book Now","nav.reviews":"Reviews",
@@ -333,6 +340,7 @@ const TRANSLATIONS = {
     "booking.label":"Reservation","booking.title":"Choose your <em>date</em>",
     "booking.desc":"Gastro tour departs every morning. For groups of 6+, we recommend booking a week in advance.",
     "contact.phone":"Mon–Sun, 08:00–20:00","contact.email":"I reply within 2 hours","footer.rights":"All rights reserved",
+    "mobile.cta":"Send inquiry",
   },
   fr: {
     "nav.about":"À Propos","nav.tours":"Visites","nav.gallery":"Galerie","nav.book":"Réserver","nav.reviews":"Avis",
@@ -361,6 +369,7 @@ const TRANSLATIONS = {
     "booking.label":"Réservation","booking.title":"Choisissez votre <em>date</em>",
     "booking.desc":"La visite gastronomique part chaque matin. Pour les groupes de 6+, nous recommandons de réserver une semaine à l'avance.",
     "contact.phone":"Lun–Dim, 08h00–20h00","contact.email":"Je réponds dans les 2 heures","footer.rights":"Tous droits réservés",
+    "mobile.cta":"Envoyer une demande",
   }
 };
 

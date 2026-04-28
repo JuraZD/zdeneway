@@ -140,6 +140,8 @@
   .btn-primary:hover { background: var(--crvena-lt); }
 
   /* FOOTER */
+  .mobile-sticky-cta { display: none; position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 140; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.24); }
+
   footer { background: var(--crna); color: rgba(255,255,255,.5); padding: 2.5rem 3rem; text-align: center; font-size: .78rem; letter-spacing: .08em; }
   footer a { color: var(--zlatna); text-decoration: none; }
 
@@ -155,6 +157,8 @@
     .includes-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; height: auto; grid-template-rows: 200px 200px; }
     .booking-grid { }
+    .mobile-sticky-cta { display: block; }
+    body { padding-bottom: 5.5rem; }
   }
 </style>
 </head>
@@ -309,6 +313,8 @@
   </div>
 </div>
 
+<a href="#booking" class="btn-primary mobile-sticky-cta" data-i18n="mobile.cta">Pošalji upit</a>
+
 <footer>
   <p style="margin-bottom:.5rem"><a href="index.html">Zdenka Rinčić · Zadar Private Tours</a></p>
   <p>© 2025 Zdenka Rinčić · <span data-i18n="footer.rights">Sva prava pridržana</span></p>
@@ -348,6 +354,7 @@ const TRANSLATIONS = {
     "booking.desc": "Tura je dostupna svaki dan. Odaberite datum i termin u kalendaru — potvrda stiže automatski na e-mail.",
     "contact.phone": "Pon–Ned, 08:00–20:00", "contact.email": "Odgovaram unutar 2 sata",
     "footer.rights": "Sva prava pridržana",
+    "mobile.cta": "Pošalji upit",
   },
   en: {
     "nav.about": "About", "nav.tours": "Tours", "nav.gallery": "Gallery",
@@ -381,6 +388,7 @@ const TRANSLATIONS = {
     "booking.desc": "Tour available every day. Choose a date and time — confirmation arrives automatically by email.",
     "contact.phone": "Mon–Sun, 08:00–20:00", "contact.email": "I reply within 2 hours",
     "footer.rights": "All rights reserved",
+    "mobile.cta": "Send inquiry",
   },
   fr: {
     "nav.about": "À Propos", "nav.tours": "Visites", "nav.gallery": "Galerie",
@@ -414,6 +422,7 @@ const TRANSLATIONS = {
     "booking.desc": "Visite disponible tous les jours. Choisissez une date — la confirmation arrive automatiquement par e-mail.",
     "contact.phone": "Lun–Dim, 08h00–20h00", "contact.email": "Je réponds dans les 2 heures",
     "footer.rights": "Tous droits réservés",
+    "mobile.cta": "Envoyer une demande",
   }
 };
 

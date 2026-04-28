@@ -444,6 +444,18 @@
     }
 
 
+
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 140;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0,0,0,.24);
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
@@ -461,6 +473,8 @@
       .reviews-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
+      .mobile-sticky-cta { display: block; }
+      body { padding-bottom: 5.5rem; }
     }
   </style>
 </head>
@@ -495,7 +509,7 @@
     <p class="hero-subtitle" data-i18n="hero.subtitle">
       Autentična iskustva s licenciranom vodicom koja voli svoj grad
     </p>
-    <a href="#booking" class="btn-primary" data-i18n="hero.cta1">Rezervirajte Turu</a>
+    <a href="#booking" class="btn-primary" data-i18n="hero.cta1">Rezerviraj termin</a>
     <a href="#tours"   class="btn-outline"  data-i18n="hero.cta2">Pogledajte Ponudu</a>
   </div>
   <div class="scroll-hint" data-i18n="hero.scroll">Skrolajte</div>
@@ -572,7 +586,7 @@
         </p>
         <div class="tour-footer">
           <div class="tour-price"><sup>€</sup>45 <small data-i18n="tours.perperson">/ osobi</small></div>
-          <a href="tour-stari-grad.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
+          <a href="tour-stari-grad.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj termin</a>
         </div>
       </div>
     </div>
@@ -596,7 +610,7 @@
         </p>
         <div class="tour-footer">
           <div class="tour-price"><sup>€</sup>120 <small data-i18n="tours.perperson">/ osobi</small></div>
-          <a href="tour-otoci.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
+          <a href="tour-otoci.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj termin</a>
         </div>
       </div>
     </div>
@@ -620,7 +634,7 @@
         </p>
         <div class="tour-footer">
           <div class="tour-price"><sup>€</sup>75 <small data-i18n="tours.perperson">/ osobi</small></div>
-          <a href="tour-gastro.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj</a>
+          <a href="tour-gastro.html" class="btn-book" data-i18n="tours.bookbtn">Rezerviraj termin</a>
         </div>
       </div>
     </div>
@@ -781,6 +795,8 @@
 </footer>
 
 
+<a href="#booking" class="btn-primary mobile-sticky-cta" data-i18n="mobile.cta">Pošalji upit</a>
+
 <script>
 // ─── TRANSLATIONS ──────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
@@ -792,7 +808,7 @@ const TRANSLATIONS = {
     "nav.reviews": "Recenzije",
     "hero.eyebrow": "Privatna turistička vodiča · Zadar, Hrvatska",
     "hero.subtitle": "Autentična iskustva s licenciranom vodicom koja voli svoj grad",
-    "hero.cta1": "Rezervirajte Turu",
+    "hero.cta1": "Rezerviraj termin",
     "hero.cta2": "Pogledajte Ponudu",
     "hero.scroll": "Skrolajte",
     "about.label": "Vaš vodič",
@@ -822,7 +838,7 @@ const TRANSLATIONS = {
     "tours.t3.title": "Okusi Dalmacije – Hrana & Vino",
     "tours.t3.desc": "Maslinova ulja, paški sir, morski plodovi i lokalna vina — gastro tura kroz tržnicu, konobe i obiteljske vinarije.",
     "tours.perperson": "/ osobi",
-    "tours.bookbtn": "Rezerviraj",
+    "tours.bookbtn": "Rezerviraj termin",
     "gallery.label": "Vizualni dnevnik",
     "booking.label": "Rezervacija",
     "booking.desc": "Odaberite turu i termin putem kalendara. Potvrda stiže automatski na e-mail. Otkaz besplatan do 48 sati unaprijed.",
@@ -841,6 +857,7 @@ const TRANSLATIONS = {
     "footer.col2.ig": "Instagram",
     "footer.col2.ta": "TripAdvisor profil",
     "footer.rights": "Sva prava pridržana",
+    "mobile.cta": "Pošalji upit",
   },
   en: {
     "nav.about": "About",
@@ -850,7 +867,7 @@ const TRANSLATIONS = {
     "nav.reviews": "Reviews",
     "hero.eyebrow": "Private Tour Guide · Zadar, Croatia",
     "hero.subtitle": "Authentic experiences with a licensed guide who truly loves her city",
-    "hero.cta1": "Book a Tour",
+    "hero.cta1": "Book your date",
     "hero.cta2": "View Tours",
     "hero.scroll": "Scroll",
     "about.label": "Your guide",
@@ -880,7 +897,7 @@ const TRANSLATIONS = {
     "tours.t3.title": "Taste of Dalmatia – Food & Wine",
     "tours.t3.desc": "Olive oils, Pag cheese, seafood and local wines — a gastronomic journey through the market, traditional konobas and family wineries.",
     "tours.perperson": "/ person",
-    "tours.bookbtn": "Book Now",
+    "tours.bookbtn": "Book your date",
     "gallery.label": "Visual diary",
     "booking.label": "Reservation",
     "booking.desc": "Choose your tour and date via the calendar below. Confirmation arrives automatically by email. Free cancellation up to 48 hours in advance.",
@@ -899,6 +916,7 @@ const TRANSLATIONS = {
     "footer.col2.ig": "Instagram",
     "footer.col2.ta": "TripAdvisor profile",
     "footer.rights": "All rights reserved",
+    "mobile.cta": "Send inquiry",
   },
   fr: {
     "nav.about": "À Propos",
@@ -908,7 +926,7 @@ const TRANSLATIONS = {
     "nav.reviews": "Avis",
     "hero.eyebrow": "Guide Touristique Privée · Zadar, Croatie",
     "hero.subtitle": "Des expériences authentiques avec une guide qui aime vraiment sa ville",
-    "hero.cta1": "Réserver une Visite",
+    "hero.cta1": "Réserver une date",
     "hero.cta2": "Voir les Visites",
     "hero.scroll": "Défiler",
     "about.label": "Votre guide",
@@ -938,7 +956,7 @@ const TRANSLATIONS = {
     "tours.t3.title": "Saveurs de Dalmatie – Gastronomie & Vins",
     "tours.t3.desc": "Huiles d'olive, fromage de Pag, fruits de mer et vins locaux — un voyage gastronomique à travers le marché, les konobas traditionnelles et les caves familiales.",
     "tours.perperson": "/ personne",
-    "tours.bookbtn": "Réserver",
+    "tours.bookbtn": "Réserver une date",
     "gallery.label": "Journal visuel",
     "booking.label": "Réservation",
     "booking.desc": "Choisissez votre visite et votre date via le calendrier. La confirmation est envoyée automatiquement par e-mail. Annulation gratuite jusqu'à 48 heures à l'avance.",
@@ -957,6 +975,7 @@ const TRANSLATIONS = {
     "footer.col2.ig": "Instagram",
     "footer.col2.ta": "Profil TripAdvisor",
     "footer.rights": "Tous droits réservés",
+    "mobile.cta": "Envoyer une demande",
   }
 };
 
